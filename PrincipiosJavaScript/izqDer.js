@@ -1,7 +1,7 @@
 let mat = [20, 10, -80, 10, 10, 15, 35];
 
 function comSimil(matriz) {
-  numeros = {};
+  let numeros = {};
   matriz.forEach((numero, index) => {
     numeros[index] = { derecha: 0, izquierda: 0 };
 

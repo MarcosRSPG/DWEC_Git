@@ -8,9 +8,9 @@ function contarNumeros(numeros) {
       : 1;
   });
 
-  minimo = Math.min(...Object.values(mapa));
+  let minimo = Math.min(...Object.values(mapa));
 
-  minimos = [];
+  let minimos = [];
   numeros.forEach((numero) => {
     if (mapa[numero] === minimo) {
       minimos.push(numero);
