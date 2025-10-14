@@ -1,7 +1,8 @@
 let base = ["R", "R", "G", "B", "R", "G", "B", "B"];
 let opciones = ["R", "G", "B"];
 function hacerPiramide(base) {
-  console.log(base);
+  console.log(base.join(" "));
+  cumulSP = "";
   for (let i = base.length - 1; i > 0; i--) {
     let nuevaRow = [];
     for (let y = 0; y < base.length - 1; y++) {
@@ -20,7 +21,8 @@ function hacerPiramide(base) {
         );
       }
     }
-    console.log(nuevaRow);
+    cumulSP += " ";
+    console.log(cumulSP + nuevaRow.join(" "));
     base = nuevaRow;
   }
 }

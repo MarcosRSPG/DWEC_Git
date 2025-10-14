@@ -1,4 +1,4 @@
-let num = 3101;
+let num = 9999999999999999;
 
 function cuadrados(num) {
   let solucion = [];
