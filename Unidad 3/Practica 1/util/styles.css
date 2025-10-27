@@ -1,0 +1,58 @@
+form {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  border: 2px solid black;
+  justify-items: center;
+  height: 20rem;
+}
+.labelImporte {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  font-size: 2rem;
+}
+#inputImporte {
+  font-size: x-large;
+  display: block;
+}
+
+.labelDivisaForm {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  font-size: 2rem;
+}
+#inputDivisaFrom {
+  font-size: x-large;
+  display: block;
+}
+
+.figureFlechas {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  width: 50%;
+}
+
+.imgFlechas {
+  max-height: 100%;
+}
+.labelDivisaTo {
+  grid-column-start: 4;
+  grid-row-start: 1;
+  font-size: 2rem;
+}
+#inputDivisaTo {
+  font-size: x-large;
+  display: block;
+}
+#inputSubmit {
+  display: block;
+  grid-column-start: 4;
+  grid-row-start: 2;
+  font-size: 2rem;
+  width: 80%;
+  height: 80%;
+}
+h1 {
+  text-align: center;
+  font-size: 5rem;
+}

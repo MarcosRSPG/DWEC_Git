@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p">selectedIndex: 0</p>
+
+    <select id="select">
+      <option selected>Option A</option>
+      <option>Option B</option>
+      <option>Option C</option>
+      <option>Option D</option>
+      <option>Option E</option>
+    </select>
+    <script>
+      const selectElem = document.getElementById("select");
+      const pElem = document.getElementById("p");
+
+      // When a new <option> is selected
+      selectElem.addEventListener("change", () => {
+        const index = selectElem.selectedIndex;
+        // Add that data to the <p>
+        pElem.textContent = `selectedIndex: ${index}`;
+      });
+    </script>
+  </body>
+</html>

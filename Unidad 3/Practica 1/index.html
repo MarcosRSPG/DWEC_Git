@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./util/styles.css" />
+    <script defer src="./util/main.js" type="module"></script>
+    <script defer src="./util/conversor.js" type="module"></script>
+    <script defer src="./util/constantes.js" type="module"></script>
     <title>Document</title>
   </head>
   <body>
@@ -11,27 +14,30 @@
       <form method="get" action="">
         <label class="labelImporte">
           Importe
-          <input type="number" value="0" class="inputImporte" />
+          <input type="number" value="0" id="inputImporte" />
         </label>
         <label class="labelDivisaForm">
           De:
-          <select type="moneda" class="inputDivisaFrom">
+          <select type="moneda" id="inputDivisaFrom">
             <option value="">--Please choose an option--</option>
-            <option value="Euros">Euros</option>
-            <option value="Libras">Libras</option>
-            <option value="Dolares">Dolares</option>
+            <option value="0">Euros</option>
+            <option value="1">Libras</option>
+            <option value="2">Dolares</option>
           </select>
         </label>
+        <figure class="figureFlechas">
+          <img class="imgFlechas" alt="flechas" src="./img/flechas.png" />
+        </figure>
         <label class="labelDivisaTo">
           A:
-          <select type="moneda" class="inputDivisaTo">
+          <select type="moneda" id="inputDivisaTo">
             <option value="">--Please choose an option--</option>
-            <option value="Euros">Euros</option>
-            <option value="Libras">Libras</option>
-            <option value="Dolares">Dolares</option>
+            <option value="0">Euros</option>
+            <option value="1">Libras</option>
+            <option value="2">Dolares</option>
           </select>
         </label>
-        <input type="submit" value="Cambiar" class="inputSubmit" />
+        <input type="submit" value="Cambiar" id="inputSubmit" />
       </form>
       <h1>Historico</h1>
       <section></section>
