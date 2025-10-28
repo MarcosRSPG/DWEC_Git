@@ -7,6 +7,7 @@
     <script defer src="./util/main.js" type="module"></script>
     <script defer src="./util/conversor.js" type="module"></script>
     <script defer src="./util/constantes.js" type="module"></script>
+    <script defer src="./util/historico.js" type="module"></script>
     <title>Document</title>
   </head>
   <body>
@@ -18,29 +19,28 @@
         </label>
         <label class="labelDivisaForm">
           De:
-          <select type="moneda" id="inputDivisaFrom">
-            <option value="">--Please choose an option--</option>
-            <option value="0">Euros</option>
+          <select type="moneda" id="inputDivisaFrom" class="inputDivisaFrom">
+            <option value="0" selected>Euros</option>
             <option value="1">Libras</option>
             <option value="2">Dolares</option>
           </select>
         </label>
-        <figure class="figureFlechas">
+        <figure class="figureFlechas" id="figureFlechas">
           <img class="imgFlechas" alt="flechas" src="./img/flechas.png" />
         </figure>
         <label class="labelDivisaTo">
           A:
-          <select type="moneda" id="inputDivisaTo">
-            <option value="">--Please choose an option--</option>
+          <select type="moneda" id="inputDivisaTo" class="inputDivisaTo">
             <option value="0">Euros</option>
             <option value="1">Libras</option>
-            <option value="2">Dolares</option>
+            <option value="2" selected>Dolares</option>
           </select>
         </label>
         <input type="submit" value="Cambiar" id="inputSubmit" />
       </form>
       <h1>Historico</h1>
-      <section></section>
+      <section id="historico"></section>
+      <template id="texto"><p></p></template>
     </main>
   </body>
 </html>
