@@ -1,7 +1,9 @@
 import { cambiar } from "./conversor.js";
 import { generarHistorico } from "./historico.js";
+import { HISTORIC_KEY } from "./constantes.js";
 
 const divisas = ["euros", "libras", "dolares"];
+let arrayHistorico = [];
 
 const btnCambiar = document.getElementById("inputSubmit");
 const figureFlechas = document.getElementById("figureFlechas");
@@ -13,6 +15,8 @@ const divisaFrom = document.getElementById("inputDivisaFrom");
 const divisaTo = document.getElementById("inputDivisaTo");
 
 let cambio = 0;
+
+loadHistoric();
 
 figureFlechas.addEventListener("click", (event) => {
   event.preventDefault();
@@ -35,9 +39,39 @@ btnCambiar.addEventListener("click", (event) => {
   );
   let fecha = new Date(Date.now());
 
-  let frase = `${fecha.getDate()}/${fecha.getMonth()}/${fecha.getFullYear()} ${fecha.getHours()}:${fecha.getMinutes()} importe ${monto} ${
-    divisas[parseInt(divisaFromSelected)]
-  } - ${resultado} ${divisas[parseInt(divisaToSelected)]}`;
+  const dia = String(fecha.getDate()).padStart(2, "0");
+  const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+  const ano = fecha.getFullYear();
+  const hora = String(fecha.getHours()).padStart(2, "0");
+  const min = String(fecha.getMinutes()).padStart(2, "0");
 
-  generarHistorico(contenedor, template, frase);
+  let objHistorico = {
+    dia: dia,
+    mes: mes,
+    ano: ano,
+    hora: hora,
+    min: min,
+    monto: monto.toFixed(2),
+    divisaFrom: divisas[parseInt(divisaFromSelected)],
+    cambio: cambio.toFixed(2),
+    divisaTo: divisas[parseInt(divisaToSelected)],
+  };
+
+  generarHistorico(contenedor, template, objHistorico);
+  addLineHistoricToLocalStorage(objHistorico);
 });
+
+function addLineHistoricToLocalStorage(objHistorico) {
+  arrayHistorico.push(objHistorico);
+  localStorage.setItem(HISTORIC_KEY, JSON.stringify(arrayHistorico));
+}
+
+function loadHistoric() {
+  let stringHistoric = localStorage.getItem(HISTORIC_KEY);
+  if (stringHistoric !== null) {
+    arrayHistorico = JSON.parse(stringHistoric);
+    arrayHistorico.forEach((element) => {
+      generarHistorico(contenedor, template, element);
+    });
+  }
+}
