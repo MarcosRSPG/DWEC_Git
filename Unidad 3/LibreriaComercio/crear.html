@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./util/style.css" />
+    <title>Crear</title>
+  </head>
+  <body>
+    <header>
+      <figure id="figureComercio">
+        <a href="./index.html">
+          <img
+            id="imgComercio"
+            alt="Icono Comercio"
+            src="./img/iconoComercio.ico"
+          />
+        </a>
+      </figure>
+      <h1>Librería Comercio</h1>
+    </header>
+    <main>
+      <figure id="figureLibreriaCrear">
+        <img id="imgLibreriaCrear" alt="Libreria" src="./img/library.jpg" />
+      </figure>
+      <form id="formDatos">
+        <label id="lblNombre" for="inputNombre" class="lblNombre">
+          Nombre:
+        </label>
+        <input type="text" id="inputNombre" class="inputNombre" />
+        <label id="lblPaginas" for="inputPaginas" class="lblPaginas">
+          Páginas:
+        </label>
+        <input type="number" id="inputPaginas" class="inputPaginas" />
+        <label id="lblPrestado" for="inputPrestado" class="lblPrestado">
+          Prestado:
+        </label>
+        <input type="checkbox" id="inputPrestado" class="inputPrestado" />
+        <input type="submit" value="Crear" id="submitCrear" />
+      </form>
+    </main>
+  </body>
+</html>
