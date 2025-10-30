@@ -243,44 +243,26 @@ h1 {
 }
 #articulo {
   justify-self: center;
-  width: 30%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 25%;
   font-size: x-large;
   padding: 10px;
-  row-gap: 10px;
   border: 2px solid black;
+  border-collapse: collapse;
+  margin: 50px;
 }
-#nomLibro {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 1;
+#articulo th {
+  font-weight: bolder;
+  background-color: palevioletred;
+  text-align: center;
   justify-self: center;
   font-size: xx-large;
-  border-top: 2px solid black;
+  padding: 8px;
+  border: 1px solid black;
 }
-#lblNomAut {
-  grid-column-start: 1;
-  grid-row-start: 2;
-}
-#nomAut {
-  grid-column-start: 2;
-  grid-row-start: 2;
-}
-#lblNumPag {
-  grid-column-start: 1;
-  grid-row-start: 3;
-}
-#numPag {
-  grid-column-start: 2;
-  grid-row-start: 3;
-}
-#lblPres {
-  grid-column-start: 1;
-  grid-row-start: 4;
-}
-#pres {
-  grid-column-start: 2;
-  grid-row-start: 4;
+
+#articulo td {
+  background-color: white;
+  padding: 8px;
+  vertical-align: center;
+  width: 50%;
 }

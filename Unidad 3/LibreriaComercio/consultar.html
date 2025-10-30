@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./util/style.css" />
+    <script type="module" src="./util/consultar.js"></script>
+    <script type="module" src="./util/constantes.js"></script>
     <title>Consultar</title>
   </head>
   <body>
@@ -20,18 +22,26 @@
       <h1>Librería Comercio</h1>
     </header>
     <main>
-      <section id="libro">
-        <article id="articulo">
-          <h2 id="nomLibro">HOLA</h2>
-          <label id="lblNomAut">Nombre de autor:</label>
-          <label id="nomAut"></label>
-          <label id="lblNumPag">Numero de páginas:</label>
-          <label id="numPag"></label>
-          <label id="lblPres">Prestado:</label>
-          <label id="pres"></label>
-        </article>
-      </section>
-      <template id="tempLibro"> </template>
+      <section id="libro"></section>
+      <template id="tempLibro"
+        ><table id="articulo">
+          <tr>
+            <th colspan="2" id="nomLibro"></th>
+          </tr>
+          <tr>
+            <td id="lblNomAut">Nombre de autor:</td>
+            <td id="nomAut"></td>
+          </tr>
+          <tr>
+            <td id="lblNumPag">Número de páginas:</td>
+            <td id="numPag"></td>
+          </tr>
+          <tr>
+            <td id="lblPres">Prestado:</td>
+            <td id="pres"></td>
+          </tr>
+        </table>
+      </template>
     </main>
   </body>
 </html>
