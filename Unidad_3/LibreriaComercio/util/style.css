@@ -266,3 +266,41 @@ h1 {
   vertical-align: center;
   width: 50%;
 }
+
+#cabeceraArticulo {
+  position: relative;
+}
+
+#btnCerrarArticulo,
+#btnEditarArticulo {
+  position: absolute;
+  top: 4px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+#btnCerrarArticulo {
+  right: 8px;
+  background: red;
+}
+
+#btnEditarArticulo {
+  right: 48px;
+  background: orange;
+}
+
+#btnCerrarArticulo:hover,
+#btnEditarArticulo:hover {
+  transform: scale(1.1);
+}

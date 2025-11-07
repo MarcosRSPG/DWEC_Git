@@ -9,6 +9,7 @@ const btnCrear = document.getElementById("submitCrear");
 cargarLibros();
 
 btnCrear.addEventListener("click", (event) => {
+  event.stopPropagation();
   let titulo = document.getElementById("inputNombre").value;
   let nomAut = nomAutor;
   let numPag = parseInt(document.getElementById("inputPaginas").value);
