@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./js/constantes.js"></script>
+    <script type="module" src="./js/nuevoTren.js"></script>
+    <script type="module" src="./js/cargarViajes.js"></script>
+    <script type="module" src="./js/listarTrenes.js"></script>
+    <title>Gestor de trenes</title>
+  </head>
+  <body>
+    <header><h1>Thomas y sus Amigos: Gestor de Trenes</h1></header>
+    <main>
+      <form>
+        <label><h2>Registrar Nuevo Tren</h2></label>
+        <label for="inputNom">Nombre: </label>
+        <input type="text" name="name" id="inputNom" />
+        <label for="inputVel">Velocidad (km/h): </label>
+        <input
+          type="number"
+          name="number"
+          id="inputVel"
+          max="300"
+          min="10"
+          value="10"
+        />
+        <label for="selectTip">Tipo: </label>
+        <select id="selectTip" class="selectTip">
+          <option value="Vapor">Vapor</option>
+          <option value="Diésel">Diésel</option>
+          <option value="Eléctrico">Eléctrico</option>
+          <option value="Maglev">Maglev</option>
+        </select>
+        <input type="submit" value="Añadir Tren" id="submitNewTren" />
+      </form>
+      <form>
+        <label><h2>Simulador de Viajes</h2></label>
+        <label for="selectEsOr">Estación Origen: </label>
+        <select id="selectEsOr" class="selectEsOr">
+          <option value="0">Sodor Central</option>
+          <option value="1">Knapford</option>
+          <option value="2">Vicarstown</option>
+          <option value="3">Tidmouth Sheds</option>
+        </select>
+        <label for="selectEsDes">Estación Destino: </label>
+        <select id="selectEsDes" class="selectEsDes">
+          <option value="0">Sodor Central</option>
+          <option value="1">Knapford</option>
+          <option value="2">Vicarstown</option>
+          <option value="3">Tidmouth Sheds</option>
+        </select>
+        <label for="selectSelTren">Selecciona Tren: </label>
+        <select id="selectSelTren" class="selectSelTren"></select>
+        <input type="submit" value="Simular Viaje" id="submitSimVia" />
+      </form>
+      <form>
+        <label><h2>Listado de Trenes</h2></label>
+        <input
+          type="text"
+          name="name"
+          id="inputBusc"
+          placeholder="Buscar por nombre o tipo"
+        />
+        <section id="listTrenes"></section>
+        <input type="submit" value="Search" id="submitSearch" />
+        <input
+          type="submit"
+          value="Borrar todos los trenes"
+          id="submitDelete"
+        />
+        <template id="opTren">
+          <option id="optNomTren"></option>
+        </template>
+        <template id="tempTren"
+          ><table id="tren">
+            <tr>
+              <th colspan="2" id="cabecera">
+                <span id="nom"></span>
+              </th>
+            </tr>
+            <tr>
+              <td id="lblTip">Tipo:</td>
+              <td id="tip"></td>
+            </tr>
+            <tr>
+              <td id="lblVel">Velocidad:</td>
+              <td id="vel"></td>
+            </tr>
+            <tr>
+              <td id="lblFechAlt">Fecha de Alta:</td>
+              <td id="fechAlt"></td>
+            </tr>
+          </table>
+        </template>
+        <template id="tempViaje"
+          ><table id="viaje">
+            <tr>
+              <th colspan="2" id="cabecera">
+                <span id="nomViaje"></span>
+              </th>
+            </tr>
+            <tr>
+              <td id="lblTren">Tren:</td>
+              <td id="tren"></td>
+            </tr>
+            <tr>
+              <td id="lblDist">Distancia:</td>
+              <td id="dist"></td>
+            </tr>
+            <tr>
+              <td id="lblTiempo">Tiempo estimado:</td>
+              <td id="tiempo"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td colspan="2" id="lblIncidente"></td>
+            </tr>
+          </table>
+        </template>
+      </form>
+    </main>
+  </body>
+</html>
