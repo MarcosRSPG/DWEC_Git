@@ -1,0 +1,17 @@
+export class Task {
+  constructor(
+    title,
+    description,
+    priority,
+    done = false,
+    createAt = new Date(Date.now()),
+    id = null
+  ) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.priority = priority;
+    this.done = done;
+    this.createAt = createAt;
+  }
+}
