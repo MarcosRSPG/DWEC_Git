@@ -1,12 +1,25 @@
 import { GeneralTasks } from "./patterns/taskSingleton.js";
 import { Task } from "./models/task.js";
-
+import {
+  FilterStrategy,
+  FilterTaskByState,
+  FilterTaskByPriority,
+} from "./utilities/Filters.js";
+import { Facade } from "./ui/Facade.js";
 let general = new GeneralTasks();
 
 const btnCrear = document.getElementById("submitCrear");
 const inputTitulo = document.getElementById("inputTitulo");
 const inputDescripcion = document.getElementById("inputDescripcion");
 const selectPrioridad = document.getElementById("selectPrioridad");
+
+const filtrarPrioridad = document.getElementById("filtrarPrioridad");
+const filtrarCompletado = document.getElementById("filtrarCompletado");
+
+let filtrador = new FilterStrategy();
+let modificador = new Facade();
+
+modificador.construirTasks(filtrar());
 
 btnCrear.addEventListener("click", (event) => {
   general.newTask(
@@ -17,3 +30,22 @@ btnCrear.addEventListener("click", (event) => {
     )
   );
 });
+
+filtrarPrioridad.addEventListener("change", (event) => {
+  modificador.construirTasks(filtrar());
+});
+filtrarCompletado.addEventListener("change", (event) => {
+  modificador.construirTasks(filtrar());
+});
+
+function filtrar() {
+  filtrador.setStrategy(new FilterTaskByPriority());
+  const prioridad = filtrarPrioridad[filtrarPrioridad.selectedIndex].value;
+
+  let arrayFiltrado = filtrador.filter(general.getTasks(), prioridad);
+
+  filtrador.setStrategy(new FilterTaskByState());
+  const estado = filtrarCompletado[filtrarCompletado.selectedIndex].value;
+
+  return filtrador.filter(arrayFiltrado, estado);
+}

@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script defer src="./js/constantes.js" type="module"></script>
+    <script defer src="./js/main.js" type="module"></script>
+    <script defer src="./js/patterns/taskSingleton.js" type="module"></script>
+    <script defer src="./js/models/task.js" type="module"></script>
+    <script defer src="./js/utilities/Filters.js" type="module"></script>
+    <script defer src="./js/ui/Facade.js" type="module"></script>
     <title>Document</title>
   </head>
   <body>
@@ -20,14 +26,64 @@
       <h1>Task Manager</h1>
     </header>
     <body>
+      <h2 id="lblCreador">CREADOR</h2>
       <section id="opcionesTask">
-        <button id="cud" onclick="location.href = './admin.html'">
-          Administar Tareas
-        </button>
-        <button id="buscar" onclick="location.href = './search.html'">
-          Buscar Tareas
-        </button>
+        <form id="formTarea">
+          <label id="headTarea">NUEVA TAREA</label>
+          <label id="lblTitulo" for="inputTitulo">Título:</label>
+          <input id="inputTitulo" type="text" name="name" required />
+          <label id="lblDescripcion" for="inputDescripcion">Descripción:</label>
+          <textarea
+            id="inputDescripcion"
+            type="textarea"
+            name="description"
+            required
+          ></textarea>
+          <label id="lblPrioridad" for="selectPrioridad">Prioridad:</label>
+          <select id="selectPrioridad">
+            <option value="Alta">Alta</option>
+            <option value="Media" selected>Media</option>
+            <option value="Baja">Baja</option>
+          </select>
+          <input id="submitCrear" type="submit" value="Crear" validate />
+        </form>
       </section>
+      <h2 id="lblBuscador">BUSCADOR</h2>
+      <section id="sectionBuscador">
+        <section id="filtros">
+          <label id="lblFiltrarPrioridad" for="filtrarPrioridad"
+            >Selecciona la prioridad:
+          </label>
+          <select id="filtrarPrioridad">
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+            <option value="Todos" selected>Todos</option>
+          </select>
+          <label id="lblFiltrarCompletado" for="filtrarCompletado"
+            >Selecciona el estado:
+          </label>
+          <select id="filtrarCompletado">
+            <option value="true">Completados</option>
+            <option value="false">No Completados</option>
+            <option value="Todos" selected>Todos</option>
+          </select>
+        </section>
+        <section id="filtrados"></section>
+      </section>
+      <template id="templateTarea">
+        <card id="cardTarea">
+          <section id="cabeceraTarea">
+            <h3 id="tituloTarea"></h3>
+            <button id="btnEditarTarea">✏️</button>
+            <button id="btnCerrarTarea">X</button>
+          </section>
+          <p id="descripcionTarea"></p>
+          <p id="prioridadTarea"></p>
+          <p id="creadoTarea"></p>
+          <p id="completadaTarea"></p>
+        </card>
+      </template>
     </body>
   </body>
 </html>

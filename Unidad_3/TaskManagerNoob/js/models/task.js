@@ -4,7 +4,7 @@ export class Task {
     description,
     priority,
     done = false,
-    createAt = new Date(Date.now()),
+    createAt = Date.now(),
     id = null
   ) {
     this.id = id;
