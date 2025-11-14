@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./js/constantes.js" type="module"></script>
+    <script defer src="./js/main.js" type="module"></script>
+    <script defer src="./js/patterns/PokemonSingleton.js" type="module"></script>
+    <script defer src="./js/models/pokemon.js" type="module"></script>
+    <script defer src="./js/ui/Facade.js" type="module"></script>
+    <script defer src="./js/utilities/Filters.js" type="module"></script>
+    <title>Pokemons</title>
+  </head>
+  <body>
+      <h2 id="lblCreador">Registrar nuevo Pokemon</h2>
+      <section id="opcionesPokemon">
+        <form id="formPokemon">
+          <label id="lblNombre" for="inputNombre">Nombre:</label>
+          <input id="inputNombre" type="text" name="name" required />          
+          <label id="lblTipo" for="selectTipo">Tipo:</label>
+          <select id="selectTipo">
+            <option>Fuego</option>
+            <option>Agua</option>
+            <option>Planta</option>
+          </select>
+          <template id="templateTypes">
+            <option></option>
+          </template>
+          <label for="inputNivel" id="lblNivel">Nivel:</label>
+          <input type="number" name="nivel" id="inputNivel" />
+          <input id="submitNew" type="submit" value="Añadir Pokemon" validate />
+        </form>
+      </section>
+      <section id="sectionStats">
+        <h2>Estadisticas</h2>
+        <section id="stats">
+
+        </section>
+        <button type="submit" id="submitEstadistica">Crear nueva estadistica</button>
+        <button type="submit" id="submitBorrar">Borrar todos los pokemon</button>
+    </section>
+    <template id="templateStats">
+        <article id="articlePokemon">
+          <p id="tipo"></p>
+          <p>Promedio nivel:<p id="nivel"></p></p>
+        </article>
+      </template>
+      
+      <section id="sectionBuscador">
+        <h2 id="lblBuscador">Lista de Pokémons</h2>
+        <section id="filtros">
+          <label for="inputFiltro"></label>
+          <input type="text" name="name" id="inputFiltro"/>
+          </select>
+        </section>
+        <section id="filtrados"></section>
+      </section>
+      <template id="templatePokemon">
+        <card id="cardPokemon">
+          <h3 id="nombrePokemon"></h3>
+          <label for="tipoPokemon" id="lblTemplateTipo">Tipo:</label>
+          <p id="tipoPokemon"></p>
+          <label for="nivelPokemon" id="lblTemplateNivel">Nivel:</label>
+          <p id="nivelPokemon"></p>
+          <label for="capturadoPokemon" id="lblTemplateCapturado">Capturado:</label>
+          <p id="capturadoPokemon"></p>
+        </card>
+      </template>
+  </body>
+</html>
