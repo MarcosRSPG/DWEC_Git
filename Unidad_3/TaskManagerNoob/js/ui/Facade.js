@@ -1,13 +1,22 @@
 import { GeneralTasks } from "../patterns/taskSingleton.js";
+import {
+  FilterStrategy,
+  FilterTaskByState,
+  FilterTaskByPriority,
+} from "../utilities/Filters.js";
 
 class Facade {
   constructor() {
     this.templateFiltrados = document.getElementById("templateTarea");
     this.contenedorFiltrados = document.getElementById("filtrados");
+    this.filtrarPrioridad = document.getElementById("filtrarPrioridad");
+    this.filtrarCompletado = document.getElementById("filtrarCompletado");
     this.general = new GeneralTasks();
+    this.filtrador = new FilterStrategy();
   }
   construirTasks(tasks) {
     this.derruirTodo();
+    tasks = this.filtrar(tasks);
     tasks.forEach((task) => {
       let node = this.templateFiltrados.content.cloneNode(true);
       node.querySelector("#tituloTarea").textContent = task.title;
@@ -35,10 +44,13 @@ class Facade {
       buttonEliminar.addEventListener("click", (event) => {
         this.general.deleteTask(task.id);
         window.location.href = "index.html#sectionBuscador";
+        window.location.reload();
       });
       buttonEditar.addEventListener("click", (event) => {
         this.general.changeState(task.id);
+
         window.location.href = "index.html#sectionBuscador";
+        window.location.reload();
       });
       this.contenedorFiltrados.appendChild(node);
     });
@@ -46,6 +58,22 @@ class Facade {
   derruirTodo() {
     this.contenedorFiltrados.innerHTML = "";
   }
-}
 
+  filtrar() {
+    this.filtrador.setStrategy(new FilterTaskByPriority());
+    const prioridad =
+      this.filtrarPrioridad[this.filtrarPrioridad.selectedIndex].value;
+
+    let arrayFiltrado = this.filtrador.filter(
+      this.general.getTasks(),
+      prioridad
+    );
+
+    this.filtrador.setStrategy(new FilterTaskByState());
+    const estado =
+      this.filtrarCompletado[this.filtrarCompletado.selectedIndex].value;
+
+    return this.filtrador.filter(arrayFiltrado, estado);
+  }
+}
 export { Facade };
