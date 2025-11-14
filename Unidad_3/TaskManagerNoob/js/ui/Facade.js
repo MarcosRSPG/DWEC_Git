@@ -18,7 +18,8 @@ class Facade {
     this.derruirTodo();
     tasks = this.filtrar(tasks);
     tasks.forEach((task) => {
-      let node = this.templateFiltrados.content.cloneNode(true);
+      let node =
+        this.templateFiltrados.content.firstElementChild.cloneNode(true);
       node.querySelector("#tituloTarea").textContent = task.title;
       node.querySelector("#descripcionTarea").textContent = task.description;
       node.querySelector("#prioridadTarea").textContent = task.priority;
@@ -31,7 +32,7 @@ class Facade {
       let horas = fecha.getHours();
       let minutos = fecha.getMinutes().toString().padStart(2, "0");
       let segundos = fecha.getSeconds().toString().padStart(2, "0");
-
+      node.style.backgroundColor = task.done ? "green" : "red";
       node.querySelector(
         "#creadoTarea"
       ).textContent = `${dia}/${mes}/${anyo} ${horas}:${minutos}:${segundos}`;
