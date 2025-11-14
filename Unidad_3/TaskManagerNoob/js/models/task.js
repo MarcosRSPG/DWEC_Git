@@ -1,7 +1,7 @@
 export class Task {
   constructor(
-    title,
-    description,
+    title = `Titulo ${this.id}`,
+    description = `Descripción Titulo ${this.id}`,
     priority,
     done = false,
     createAt = Date.now(),
