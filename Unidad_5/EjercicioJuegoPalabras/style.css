@@ -133,12 +133,12 @@ h1 {
   -moz-border-radius: 10%;
   -ms-border-radius: 10%;
   -o-border-radius: 10%;
-}
-#formLogin input,
-#formLogin label {
-  margin: 2%;
-  display: block;
-  font-size: xx-large;
+  input,
+  label {
+    margin: 2%;
+    display: block;
+    font-size: xx-large;
+  }
 }
 #submitLogin {
   height: 5rem;
