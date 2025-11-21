@@ -18,8 +18,11 @@ submitLogin.addEventListener("click", (event) => {
   };
   let existenceCheck = comprobarExistencia(user);
   let formatCheck = comprobarFormat(user);
-  if (existenceCheck) {
+  if (existenceCheck === "exists") {
     window.location.href = "juego.html";
+  }
+  if (existenceCheck === "wrongpsswd") {
+    passErr.textContent = "La contraseña no es correcta para este usuario";
   } else {
     if (formatCheck) {
       newUsuario(user);
@@ -40,16 +43,16 @@ function comprobarFormat(user) {
   return check;
 }
 function comprobarExistencia(user) {
+  let existencia = "notexists";
   arrUP.forEach((usuario) => {
     if (usuario.nombre === user.nombre) {
       if (usuario.password === user.password) {
-        return true;
+        existencia = "exists";
       }
-      passErr.textContent = "La contraseña no es correcta para este usuario";
-      return false;
+      existencia = "wrongpsswd";
     }
   });
-  return false;
+  return existencia;
 }
 function recogerUsuarios() {
   return JSON.parse(localStorage.getItem(USER_PASS) || "[]");

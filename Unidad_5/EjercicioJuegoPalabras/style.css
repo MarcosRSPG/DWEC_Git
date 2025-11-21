@@ -143,3 +143,8 @@ h1 {
 #submitLogin {
   height: 5rem;
 }
+
+footer {
+  font-size: xxx-large;
+  bottom: 0;
+}
