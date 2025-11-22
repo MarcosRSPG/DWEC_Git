@@ -1,5 +1,3 @@
-import { USER_PASS } from "./constantes.js";
-
 let arrUP = recogerUsuarios();
 
 const submitLogin = document.getElementById("submitLogin");
@@ -48,8 +46,9 @@ function comprobarExistencia(user) {
     if (usuario.nombre === user.nombre) {
       if (usuario.password === user.password) {
         existencia = "exists";
+      } else {
+        existencia = "wrongpsswd";
       }
-      existencia = "wrongpsswd";
     }
   });
   return existencia;

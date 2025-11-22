@@ -145,6 +145,29 @@ h1 {
 }
 
 footer {
+  justify-self: center;
+  position: absolute;
+  input,
+  button {
+    font-size: xx-large;
+  }
+  bottom: 5%;
+}
+#seccionPalabras {
+  position: relative;
+  height: 100vh;
+}
+#seccionPalabras p {
+  position: absolute;
+  font-size: xx-large;
+}
+#vidaspuntos {
   font-size: xxx-large;
-  bottom: 0;
+  justify-self: right;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  span {
+    color: green;
+  }
 }

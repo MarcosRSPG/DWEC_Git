@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./js/juego.js" type="module"></script>
     <script defer src="./js/constantes.js" type="module"></script>
+    <script defer src="./js/ui/Facade.js" type="module"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Juego</title>
   </head>
   <body>
-    <main></main>
+    <main>
+      <section id="seccionPalabras"></section>
+      <section id="vidaspuntos">
+        VIDAS:
+        <span id="pvidas">3</span>
+        <br />
+        PUNTOS:
+        <span id="ppuntos">0</span>
+      </section>
+    </main>
     <footer>
       <input type="text" name="word" id="inputPalabra" />
       <button id="btnValidar">Validar</button>
