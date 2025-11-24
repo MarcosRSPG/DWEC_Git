@@ -41,11 +41,9 @@ export class Facade {
     perder.style.visibility = "visible";
   }
   registrarStats() {
-    let usuario = JSON.parse(localStorage.getItem(USER_PASS)).nombre;
     let registro = {
-      user: usuario,
       puntos: this.valores.getPuntos(),
-      dificultad: this.dificultad.getDificultad(),
+      dificultad: this.valores.getDificultad(),
       fecha: Date.now(),
     };
     this.registros.meterDato(registro);

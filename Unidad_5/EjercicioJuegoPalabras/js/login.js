@@ -1,4 +1,5 @@
 import { USER_PASS } from "./constantes.js";
+import { Registro } from "./patterns/registroSingleton.js";
 
 let arrUP = recogerUsuarios();
 
@@ -7,6 +8,7 @@ const inputNombre = document.getElementById("inputUsuario");
 const inputPassword = document.getElementById("inputPassword");
 const passErr = document.getElementById("passError");
 const userErr = document.getElementById("userError");
+const registros = new Registro();
 
 submitLogin.addEventListener("click", (event) => {
   event.preventDefault();
@@ -19,6 +21,7 @@ submitLogin.addEventListener("click", (event) => {
   let existenceCheck = comprobarExistencia(user);
   let formatCheck = comprobarFormat(user);
   if (existenceCheck === "exists") {
+    registros.modificarUsuario(user.nombre);
     window.location.href = "juego.html";
   }
   if (existenceCheck === "wrongpsswd") {
@@ -26,6 +29,7 @@ submitLogin.addEventListener("click", (event) => {
   } else {
     if (formatCheck) {
       newUsuario(user);
+      registros.modificarUsuario(user.nombre);
       window.location.href = "juego.html";
     }
   }
