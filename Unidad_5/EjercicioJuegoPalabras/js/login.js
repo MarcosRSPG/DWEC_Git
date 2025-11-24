@@ -1,3 +1,5 @@
+import { USER_PASS } from "./constantes.js";
+
 let arrUP = recogerUsuarios();
 
 const submitLogin = document.getElementById("submitLogin");

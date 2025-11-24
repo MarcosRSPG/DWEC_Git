@@ -3,6 +3,7 @@ export class Valores {
     if (Valores.instance) return Valores.instance;
     this.vidas = 3;
     this.puntos = 0;
+    this.dificultad = 4000;
     Valores.instance = this;
   }
   getVidas() {
@@ -16,5 +17,13 @@ export class Valores {
   }
   sumarPuntos(puntos) {
     this.puntos += puntos;
+    if (this.dificultad % 10 == 0) {
+      this.dificultad -= 100;
+    } else {
+      this.dificultad -= 5;
+    }
+  }
+  getDificultad() {
+    return this.dificultad;
   }
 }
