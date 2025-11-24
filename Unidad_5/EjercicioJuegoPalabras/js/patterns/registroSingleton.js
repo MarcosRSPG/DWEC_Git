@@ -1,14 +1,13 @@
-import { REGISTER } from "../constantes.js";
+import { REGISTER, ACTUAL_USER } from "../constantes.js";
 
 export class Registro {
   constructor() {
     if (Registro.instance) return Registro.instance;
     this.registros = this.recogerDatos();
-    this.usuario = "";
     Registro.instance = this;
   }
   meterDato(registro) {
-    registro.nombre = this.usuario;
+    registro.nombre = localStorage.getItem(ACTUAL_USER);
     this.registros.forEach((unidad) => {
       if (
         unidad.nombre === registro.nombre &&
@@ -22,7 +21,7 @@ export class Registro {
     return true;
   }
   modificarUsuario(user) {
-    this.usuario = user;
+    localStorage.setItem(ACTUAL_USER, user);
   }
   recogerDatos() {
     let stringRegistro = localStorage.getItem(REGISTER);
