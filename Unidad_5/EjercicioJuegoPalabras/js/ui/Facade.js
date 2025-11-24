@@ -1,7 +1,6 @@
 import { faker } from "https://cdn.jsdelivr.net/npm/@faker-js/faker@9.0.0/+esm";
 import { Valores } from "../patterns/valoresSingleton.js";
 import { Registro } from "../patterns/registroSingleton.js";
-import { USER_PASS } from "../constantes.js";
 
 export class Facade {
   constructor() {

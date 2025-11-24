@@ -27,7 +27,7 @@ submitLogin.addEventListener("click", (event) => {
   if (existenceCheck === "wrongpsswd") {
     passErr.textContent = "La contraseña no es correcta para este usuario";
   } else {
-    if (formatCheck) {
+    if (formatCheck && existenceCheck === "notexists") {
       newUsuario(user);
       registros.modificarUsuario(user.nombre);
       window.location.href = "juego.html";
