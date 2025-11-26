@@ -31,13 +31,15 @@ export class Facade {
         clearInterval(this.id1);
         clearInterval(this.id2);
         this.pantallaPerder();
-        this.registrarStats();
       }
     });
   }
   pantallaPerder() {
+    let fondo = document.getElementById("fondo");
     let perder = document.getElementById("perder");
+    this.inputPalabra.disabled = true;
     perder.style.visibility = "visible";
+    fondo.style.visibility = "visible";
   }
   registrarStats() {
     let registro = {
@@ -62,10 +64,19 @@ export class Facade {
   nuevaPalabra() {
     const p = document.createElement("p");
     p.style.top = CSS.percent(0);
-    p.style.left = CSS.percent(Math.random() * 94);
+    p.style.left = CSS.percent(Math.random() * 92);
     let palabra = faker.word.noun();
+    if (palabra.length > 10) {
+      p.style.color = "red";
+      p.setAttribute("modificador", "vida");
+    }
+    if (palabra.length > 15) {
+      p.style.color = "yellow";
+      p.setAttribute("modificador", "dificultad");
+    }
     p.addEventListener("click", (event) => {
       this.valores.sumarPuntos(2);
+      this.comprobarMod(p);
       this.eliminarPalabra(palabra);
       this.inputPalabra.value = "";
       this.inputPalabra.focus();
@@ -78,5 +89,37 @@ export class Facade {
   }
   printPuntos() {
     this.seccionPuntos.textContent = this.valores.getPuntos();
+  }
+  comprobarMod(p) {
+    if (p.getAttribute("modificador") === "vida") {
+      this.valores.sumarVida();
+      this.printVidas();
+    }
+    if (p.getAttribute("modificador") === "dificultad") {
+      this.valores.bajarDificultad();
+    }
+  }
+  crearStats() {
+    let tabla = document.getElementById("registros");
+    let template = document.getElementById("tempReg");
+    this.registros.recogerDatos().forEach((registro) => {
+      let node = template.content.firstElementChild.cloneNode(true);
+      node.querySelector("#usuario").textContent = registro.nombre;
+      node.querySelector("#puntos").textContent = registro.puntos;
+      node.querySelector("#dificultad").textContent = registro.dificultad;
+
+      let fecha = new Date(registro.fecha);
+
+      let dia = fecha.getDate();
+      let mes = fecha.getMonth() + 1;
+      let anyo = fecha.getFullYear();
+      let horas = fecha.getHours();
+      let minutos = fecha.getMinutes().toString().padStart(2, "0");
+      let segundos = fecha.getSeconds().toString().padStart(2, "0");
+      node.querySelector(
+        "#fecha"
+      ).textContent = `${dia}/${mes}/${anyo} ${horas}:${minutos}:${segundos}`;
+      tabla.appendChild(node);
+    });
   }
 }

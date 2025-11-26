@@ -3,6 +3,8 @@ import { Valores } from "./patterns/valoresSingleton.js";
 
 const btnValidar = document.getElementById("btnValidar");
 const inputPalabra = document.getElementById("inputPalabra");
+const btnReload = document.getElementById("reload");
+const btnStats = document.getElementById("stats");
 
 const facade = new Facade();
 const valores = new Valores();
@@ -21,6 +23,16 @@ document.body.addEventListener("keydown", (event) => {
     event.preventDefault();
     comprobarPunto();
   }
+});
+
+btnReload.addEventListener("click", (event) => {
+  facade.registrarStats();
+  window.location.reload();
+});
+
+btnStats.addEventListener("click", (event) => {
+  facade.registrarStats();
+  window.location.href = "stats.html";
 });
 
 function comprobarPunto() {

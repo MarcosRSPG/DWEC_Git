@@ -15,6 +15,9 @@ export class Valores {
   restarVida() {
     this.vidas--;
   }
+  sumarVida() {
+    this.vidas++;
+  }
   sumarPuntos(puntos) {
     this.puntos += puntos;
     if (this.dificultad % 10 == 0) {
@@ -25,5 +28,8 @@ export class Valores {
   }
   getDificultad() {
     return this.dificultad;
+  }
+  bajarDificultad() {
+    this.dificultad += 50;
   }
 }
