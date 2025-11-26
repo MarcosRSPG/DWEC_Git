@@ -5,6 +5,13 @@ const imgGlobos = [
   { tipo: "rojo", src: "./img/redCircle.jpg" },
   { tipo: "verde", src: "./img/Green_Circle.png" },
 ];
+/* let tiempo = 0;
+let puntos = 0;
+let numVerdes = 0;
+let fallos = 0;
+generarGlobos(Number.parseInt(localStorage.getItem(NUM_GLOB)));
+
+setInterval(() => moverGlobos(), 100); */
 
 generarGlobos(Number.parseInt(localStorage.getItem(NUM_GLOB)));
 
@@ -20,6 +27,12 @@ function generarGlobos(num) {
     let template = document.getElementById("tempGlob");
     let node = template.content.firstElementChild.cloneNode(true);
     node.querySelector("#imagen").setAttribute("src", imgGlobos[imgGlobo].src);
+    /*     node.setAttribute("tipo", imgGlobos[imgGlobo].tipo);
+    if (node.getAttribute("tipo") === "verde") {
+      numVerdes++;
+    }
+    node.addEventListener("click", (event) => {
+      if (node.getAttribute("tipo") === "verde") { */
     node
       .querySelector("#imagen")
       .setAttribute("tipo", imgGlobos[imgGlobo].tipo);
@@ -61,6 +74,8 @@ function moverGlobos() {
   if (comprobarVerdes()) {
     let puntuacion = 1000 / (tiempo / 1000) + puntos * 10 - fallos * 5;
     localStorage.setItem(PUNTUACION, puntuacion);
+    /* alert(`Tu puntuacion es: ${puntuacion}`);
+    window.location.href = "numGlob.html"; */
     window.location.href = "puntuaciones.html";
   }
 }
@@ -71,6 +86,8 @@ function moverHorizontal(node, direccion) {
   if (direccion === "left" && parseFloat(node.style.left) <= 97) {
     node.style.left = (parseFloat(node.style.left) || 0) + 0.1 + "%";
   }
+  /* if (direccion === "right" && parseFloat(node.style.left) >= 0) {
+    node.style.left = (parseFloat(node.style.left) || 0) - 0.1 + "%"; */
   if (direccion === "right" && parseFloat(node.style.right) <= 97) {
     node.style.right = (parseFloat(node.style.right) || 0) + 0.1 + "%";
   }
@@ -79,6 +96,8 @@ function moverVertical(node, direccion) {
   if (direccion === "top" && parseFloat(node.style.top) <= 97) {
     node.style.top = (parseFloat(node.style.top) || 0) + 0.1 + "%";
   }
+  /* if (direccion === "bottom" && parseFloat(node.style.top) >= 0) {
+    node.style.top = (parseFloat(node.style.top) || 0) - 0.1 + "%"; */
   if (direccion === "bottom" && parseFloat(node.style.bottom) <= 97) {
     node.style.bottom = (parseFloat(node.style.bottom) || 0) + 0.1 + "%";
   }
