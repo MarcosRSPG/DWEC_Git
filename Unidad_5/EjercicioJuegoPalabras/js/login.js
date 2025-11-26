@@ -3,6 +3,7 @@ import { Registro } from "./patterns/registroSingleton.js";
 
 let arrUP = recogerUsuarios();
 
+const formulario = document.getElementById("formLogin");
 const submitLogin = document.getElementById("submitLogin");
 const inputNombre = document.getElementById("inputUsuario");
 const inputPassword = document.getElementById("inputPassword");
@@ -22,16 +23,21 @@ submitLogin.addEventListener("click", (event) => {
   let formatCheck = comprobarFormat(user);
   if (existenceCheck === "exists") {
     registros.modificarUsuario(user.nombre);
-    window.location.href = "juego.html";
   }
   if (existenceCheck === "wrongpsswd") {
-    passErr.textContent = "La contraseña no es correcta para este usuario";
+    inputPassword.setCustomValidity(
+      "La contraseña no es correcta para este usuario"
+    );
   } else {
     if (formatCheck && existenceCheck === "notexists") {
       newUsuario(user);
       registros.modificarUsuario(user.nombre);
-      window.location.href = "juego.html";
     }
+  }
+  if (!formulario.checkValidity()) {
+    formulario.reportValidity();
+  } else {
+    window.location.href = "juego.html";
   }
 });
 function comprobarFormat(user) {
@@ -39,10 +45,13 @@ function comprobarFormat(user) {
   let rep = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/;
   let check = false;
   !reu.test(user.nombre)
-    ? (userErr.textContent = "El nombre debe contener solo letras y numeros")
+    ? inputNombre.setCustomValidity(
+        "El nombre debe contener solo letras y numeros"
+      )
     : !rep.test(user.password)
-    ? (passErr.textContent =
-        "La contraseña debe contener mayusculas, minusculas, numeros y un simbolo de los siguientes: !@#$%^&*")
+    ? inputPassword.setCustomValidity(
+        "La contraseña debe contener mayusculas, minusculas, numeros y un simbolo de los siguientes: !@#$%^&*"
+      )
     : (check = true);
   return check;
 }
