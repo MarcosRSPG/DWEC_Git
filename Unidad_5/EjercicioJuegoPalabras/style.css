@@ -156,6 +156,7 @@ footer {
 #seccionPalabras {
   position: relative;
   height: 100vh;
+  user-select: none;
 }
 #seccionPalabras p {
   position: absolute;
@@ -181,7 +182,8 @@ footer {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-#perder {
+#perder,
+#stop {
   visibility: hidden;
   position: fixed;
   top: 50%;
@@ -200,6 +202,7 @@ footer {
   -o-border-radius: 3em;
   border: 5px solid black;
   z-index: 1001;
+  text-align: center;
   h1 {
     margin-bottom: 10%;
   }
@@ -215,10 +218,27 @@ footer {
     -moz-border-radius: 10%;
     -ms-border-radius: 10%;
     -o-border-radius: 10%;
+    margin: 1em;
     border: 5px solid black;
     font-size: x-large;
     font-weight: bolder;
   }
+}
+#stop {
+  #resumeStop {
+    background-color: darkgoldenrod;
+    color: white;
+  }
+  #reloadStop {
+    background-color: red;
+    color: white;
+  }
+  #statsStop {
+    background-color: green;
+    color: white;
+  }
+}
+#perder {
   #reload {
     background-color: red;
     color: white;

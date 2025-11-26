@@ -41,6 +41,26 @@ export class Facade {
     perder.style.visibility = "visible";
     fondo.style.visibility = "visible";
   }
+  pantallaStop() {
+    clearInterval(this.id1);
+    clearInterval(this.id2);
+    let fondo = document.getElementById("fondo");
+    let stop = document.getElementById("stop");
+    this.inputPalabra.disabled = true;
+    stop.style.visibility = "visible";
+    fondo.style.visibility = "visible";
+  }
+  reanudar() {
+    let fondo = document.getElementById("fondo");
+    let stop = document.getElementById("stop");
+    this.inputPalabra.disabled = false;
+    stop.style.visibility = "hidden";
+    fondo.style.visibility = "hidden";
+    this.crearPalabras(
+      this.valores.getDificultad(),
+      this.valores.getDificultad() / 100
+    );
+  }
   registrarStats() {
     let registro = {
       puntos: this.valores.getPuntos(),
@@ -49,10 +69,11 @@ export class Facade {
     };
     this.registros.meterDato(registro);
   }
-  eliminarPalabra(palabra) {
+  eliminarPalabra(palabra, puntuacion) {
     this.seccionPalabras.childNodes.forEach((node) => {
       if (node.textContent.toLowerCase() === palabra.toLowerCase()) {
         this.seccionPalabras.removeChild(node);
+        this.valores.sumarPuntos(puntuacion);
         this.printPuntos();
         this.crearPalabras(
           this.valores.getDificultad(),
@@ -74,10 +95,14 @@ export class Facade {
       p.style.color = "yellow";
       p.setAttribute("modificador", "dificultad");
     }
+    p.addEventListener("copy", (event) => {
+      event.preventDefault();
+    });
     p.addEventListener("click", (event) => {
-      this.valores.sumarPuntos(2);
-      this.comprobarMod(p);
-      this.eliminarPalabra(palabra);
+      if (this.inputPalabra.value.toLowerCase() === p.innerText.toLowerCase()) {
+        this.comprobarMod(p);
+        this.eliminarPalabra(palabra, 2);
+      }
       this.inputPalabra.value = "";
       this.inputPalabra.focus();
     });
