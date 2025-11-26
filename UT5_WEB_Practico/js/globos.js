@@ -32,7 +32,9 @@ function generarGlobos(num) {
       numVerdes++;
     }
     node.addEventListener("click", (event) => {
-      if (node.getAttribute("tipo") === "verde") { */
+      if (node.getAttribute("tipo") === "verde") { 
+        puntos++;
+      } */
     node
       .querySelector("#imagen")
       .setAttribute("tipo", imgGlobos[imgGlobo].tipo);
