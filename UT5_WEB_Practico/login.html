@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./js/login.js" type="module"></script>
+    <script defer src="./js/constantes.js" type="module"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <figure id="figureComercio">
+        <a href="./index.html">
+          <img
+            id="imgComercio"
+            alt="Icono Comercio"
+            src="./img/iconoComercio.ico"
+          />
+        </a>
+      </figure>
+      <h1>Juego de Globos</h1>
+    </header>
+    <main>
+      <form id="formLogin">
+        <label for="inputUsuario" id="lblUsuario">Usuario:</label>
+        <input type="name" id="inputUsuario" required autocomplete="username" />
+        <div id="userError" class="error"></div>
+        <label for="inputPassword" id="lblPassword">Contraseña:</label>
+        <input
+          type="password"
+          id="inputPassword"
+          minlength="8"
+          required
+          autocomplete="current-password"
+        />
+        <div id="passError" class="error"></div>
+        <input type="submit" id="submitLogin" value="Login" />
+      </form>
+    </main>
+  </body>
+</html>
