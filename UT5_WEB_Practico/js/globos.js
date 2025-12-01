@@ -48,11 +48,9 @@ function generarGlobos(num) {
   let template = document.getElementById("tempGlob");
   let node = template.content.firstElementChild.cloneNode(true);
   node.querySelector("#imagen").setAttribute("src", "./img/Yellow_Circle.png");
-  node.querySelector("#imagen").setAttribute("tipo", "amarillo");
+  node.setAttribute("tipo", "amarillo");
   node.addEventListener("click", (event) => {
-    if (tiempo <= 3000) {
-      multiplicador = 2;
-    }
+    multiplicador = 2;
     seccion.removeChild(node);
   });
   node.style.top = CSS.percent(Math.random() * 80);
@@ -60,6 +58,7 @@ function generarGlobos(num) {
   seccion.appendChild(node);
 }
 function moverGlobos() {
+  tiempo += 100;
   seccion.childNodes.forEach((node) => {
     let vertical = ["top", "bottom"];
     let horizontal = ["right", "left"];
@@ -67,11 +66,14 @@ function moverGlobos() {
     moverHorizontal(node, horizontal[Math.round(Math.random())]);
     moverVertical(node, vertical[Math.round(Math.random())]);
 
-    tiempo += 100;
+    if (tiempo > 3000 && node.getAttribute("tipo") === "amarillo") {
+      seccion.removeChild(node);
+    }
   });
   if (comprobarVerdes() && !ejecutado) {
-    let puntuacion =
-      (1000 / (tiempo / 1000) + puntos * 10 - fallos * 5) * multiplicador;
+    let puntuacion = parseInt(
+      (1000 / (tiempo / 1000) + puntos * 10 - fallos * 5) * multiplicador
+    );
     localStorage.setItem(PUNTUACION, puntuacion);
     alert(`Tu puntuacion es: ${puntuacion}`);
     ejecutado = true;

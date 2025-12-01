@@ -86,7 +86,12 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-
+.error {
+  display: none;
+  color: red;
+  margin: 1%;
+  font-size: large;
+}
 html,
 body {
   background-color: lightblue;
@@ -152,4 +157,27 @@ h1 {
   width: 100%;
   height: auto;
   object-fit: fill;
+}
+#formGlob {
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  justify-self: center;
+  margin: 10%;
+  width: 30%;
+  font-size: x-large;
+}
+
+#formGlob label,
+#formGlob input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: x-large;
+}
+
+#ejecutar {
+  width: 100%;
+  cursor: pointer;
 }

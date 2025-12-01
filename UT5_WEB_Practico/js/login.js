@@ -23,6 +23,7 @@ submitLogin.addEventListener("click", (event) => {
   }
   if (existenceCheck === "wrongpsswd") {
     passErr.textContent = "La contraseña no es correcta para este usuario";
+    passErr.style.display = "block";
   } else {
     if (formatCheck && existenceCheck === "notexists") {
       newUsuario(user);
@@ -35,10 +36,12 @@ function comprobarFormat(user) {
   let rep = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/;
   let check = false;
   !reu.test(user.nombre)
-    ? (userErr.textContent = "El nombre debe contener solo letras y numeros")
+    ? ((userErr.textContent = "El nombre debe contener solo letras y numeros"),
+      (userErr.style.display = "block"))
     : !rep.test(user.password)
-    ? (passErr.textContent =
-        "La contraseña debe contener mayusculas, minusculas, numeros y un simbolo de los siguientes: !@#$%^&*")
+    ? ((passErr.textContent =
+        "La contraseña debe contener mayusculas, minusculas, numeros y un simbolo de los siguientes: !@#$%^&*"),
+      (passErr.style.display = "block"))
     : (check = true);
   return check;
 }

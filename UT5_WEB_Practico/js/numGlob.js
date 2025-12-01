@@ -24,5 +24,6 @@ submitEjecutar.addEventListener("click", (event) => {
     window.location.href = "juego.html";
   } else {
     numErr.textContent = `Debe ser un numero entre el ${numMin} y el ${numMax}`;
+    numErr.style.display = "block";
   }
 });
