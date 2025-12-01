@@ -42,7 +42,7 @@ function generarGlobos(num) {
       seccion.removeChild(node);
     });
     node.style.top = CSS.percent(Math.random() * 80);
-    node.style.right = CSS.percent(Math.random() * 95);
+    node.style.left = CSS.percent(Math.random() * 95);
     seccion.appendChild(node);
   }
   let template = document.getElementById("tempGlob");
@@ -54,7 +54,7 @@ function generarGlobos(num) {
     seccion.removeChild(node);
   });
   node.style.top = CSS.percent(Math.random() * 80);
-  node.style.right = CSS.percent(Math.random() * 95);
+  node.style.left = CSS.percent(Math.random() * 95);
   seccion.appendChild(node);
 }
 function moverGlobos() {
@@ -85,17 +85,17 @@ function comprobarVerdes() {
 }
 function moverHorizontal(node, direccion) {
   if (direccion === "left" && parseFloat(node.style.left) <= 97) {
-    node.style.left = (parseFloat(node.style.left) || 0) + 0.1 + "%";
+    node.style.left = (parseFloat(node.style.left) || 0) + 0.5 + "%";
   }
   if (direccion === "right" && parseFloat(node.style.left) >= 0) {
-    node.style.left = (parseFloat(node.style.left) || 0) - 0.1 + "%";
+    node.style.left = (parseFloat(node.style.left) || 0) - 0.5 + "%";
   }
 }
 function moverVertical(node, direccion) {
   if (direccion === "top" && parseFloat(node.style.top) <= 97) {
-    node.style.top = (parseFloat(node.style.top) || 0) + 0.1 + "%";
+    node.style.top = (parseFloat(node.style.top) || 0) + 0.5 + "%";
   }
   if (direccion === "bottom" && parseFloat(node.style.top) >= 0) {
-    node.style.top = (parseFloat(node.style.top) || 0) - 0.1 + "%";
+    node.style.top = (parseFloat(node.style.top) || 0) - 0.5 + "%";
   }
 }
