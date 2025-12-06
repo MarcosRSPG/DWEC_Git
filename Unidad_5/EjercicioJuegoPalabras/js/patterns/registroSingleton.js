@@ -27,7 +27,7 @@ export class Registro {
     let stringRegistro = localStorage.getItem(REGISTER);
     if (stringRegistro !== null) {
       return JSON.parse(stringRegistro)
-        .toSorted((a, b) => a.puntos - b.puntos)
+        .toSorted((a, b) => a.puntos - b.puntos || b.dificultad - a.dificultad)
         .reverse();
     }
     return [];

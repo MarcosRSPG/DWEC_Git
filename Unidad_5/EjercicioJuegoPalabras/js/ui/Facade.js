@@ -131,7 +131,8 @@ export class Facade {
       let node = template.content.firstElementChild.cloneNode(true);
       node.querySelector("#usuario").textContent = registro.nombre;
       node.querySelector("#puntos").textContent = registro.puntos;
-      node.querySelector("#dificultad").textContent = registro.dificultad;
+      node.querySelector("#dificultad").textContent =
+        4000 - parseInt(registro.dificultad);
 
       let fecha = new Date(registro.fecha);
 

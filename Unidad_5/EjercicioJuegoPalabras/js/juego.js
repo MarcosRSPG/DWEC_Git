@@ -33,6 +33,9 @@ document.body.addEventListener("keydown", (event) => {
     facade.pantallaStop();
   }
 });
+document.body.addEventListener("click", (event) => {
+  inputPalabra.focus();
+});
 
 btnReload.addEventListener("click", (event) => {
   facade.registrarStats();
