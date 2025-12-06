@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shipwreck</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #e8f0ff;
+        padding: 20px;
+      }
+      #config {
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #fff;
+        width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 0 4px #777;
+      }
+      #grid {
+        display: grid;
+        gap: 5px;
+        margin-top: 20px;
+      }
+      .cell {
+        width: 40px;
+        height: 40px;
+        background: #d6e4ff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 24px;
+      }
+      .ship {
+        background: lightgreen !important;
+      }
+      .miss {
+        background: #ffb3b3 !important;
+      }
+      #vidas {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Shipwreck</h2>
+
+    <!-- FORMULARIO DE CONFIGURACIÓN -->
+    <div id="config">
+      <label>Filas: <input type="number" id="filas" min="2" value="5" /></label
+      ><br /><br />
+      <label
+        >Columnas:
+        <input type="number" id="columnas" min="2" value="5" /></label
+      ><br /><br />
+      <label>Barcos: <input type="number" id="minas" min="1" value="5" /></label
+      ><br /><br />
+
+      <button id="crear">Crear Grid</button>
+    </div>
+
+    <div id="vidas">Vidas: <span id="vidas-num">3</span></div>
+    <div id="grid"></div>
+
+    <script>
+      // ------------------- VARIABLES --------------------
+      let filas, columnas, minas;
+      let barcos = new Set();
+      let vidas = 3;
+      let aciertos = 0;
+
+      // ------------------- GUARDAR CONFIG --------------------
+      function guardarConfig() {
+        localStorage.setItem("filas", filas);
+        localStorage.setItem("columnas", columnas);
+        localStorage.setItem("minas", minas);
+      }
+
+      // ------------------- CARGAR CONFIG --------------------
+      function cargarConfig() {
+        const f = localStorage.getItem("filas");
+        const c = localStorage.getItem("columnas");
+        const m = localStorage.getItem("minas");
+
+        if (f && c && m) {
+          filas = Number(f);
+          columnas = Number(c);
+          minas = Number(m);
+
+          document.getElementById("filas").value = filas;
+          document.getElementById("columnas").value = columnas;
+          document.getElementById("minas").value = minas;
+
+          vidas = 3;
+          document.getElementById("vidas-num").textContent = vidas;
+          generarMinas();
+          generarGrid();
+        }
+      }
+
+      // ------------------- GENERAR MINAS --------------------
+      function generarMinas() {
+        barcos.clear();
+        const total = filas * columnas;
+
+        while (barcos.size < minas) {
+          const pos = Math.floor(Math.random() * total);
+          barcos.add(pos);
+        }
+      }
+
+      // ------------------- GENERAR GRID --------------------
+      function generarGrid() {
+        const grid = document.getElementById("grid");
+        grid.innerHTML = "";
+
+        grid.style.gridTemplateColumns = `repeat(${columnas}, 40px)`;
+        grid.style.gridTemplateRows = `repeat(${filas}, 40px)`;
+
+        for (let i = 0; i < filas * columnas; i++) {
+          const cell = document.createElement("div");
+          cell.className = "cell";
+          cell.dataset.index = i;
+          cell.addEventListener("click", clickCelda);
+          grid.appendChild(cell);
+        }
+      }
+
+      // ------------------- CLICK EN CELDA --------------------
+      function clickCelda(e) {
+        const celda = e.target;
+        const index = Number(celda.dataset.index);
+
+        // ya marcada
+        if (
+          celda.classList.contains("ship") ||
+          celda.classList.contains("miss")
+        )
+          return;
+
+        if (barcos.has(index)) {
+          celda.classList.add("ship");
+          celda.textContent = "🚢";
+          aciertos++;
+
+          if (aciertos === minas) {
+            setTimeout(() => alert("¡HAS GANADO!"), 100);
+          }
+        } else {
+          celda.classList.add("miss");
+          celda.textContent = "❌";
+          vidas--;
+          document.getElementById("vidas-num").textContent = vidas;
+
+          if (vidas === 0) {
+            setTimeout(() => alert("Has perdido…"), 100);
+          }
+        }
+      }
+
+      // ------------------- BOTÓN CREAR GRID --------------------
+      document.getElementById("crear").addEventListener("click", () => {
+        filas = Number(document.getElementById("filas").value);
+        columnas = Number(document.getElementById("columnas").value);
+        minas = Number(document.getElementById("minas").value);
+
+        vidas = 3;
+        aciertos = 0;
+
+        document.getElementById("vidas-num").textContent = vidas;
+
+        guardarConfig();
+        generarMinas();
+        generarGrid();
+      });
+
+      // ------------------- INICIO --------------------
+      cargarConfig();
+    </script>
+  </body>
+</html>

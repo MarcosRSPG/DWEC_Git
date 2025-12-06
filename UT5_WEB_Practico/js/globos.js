@@ -42,24 +42,23 @@ function generarGlobos(num) {
       seccion.removeChild(node);
     });
     node.style.top = CSS.percent(Math.random() * 80);
-    node.style.right = CSS.percent(Math.random() * 95);
+    node.style.left = CSS.percent(Math.random() * 95);
     seccion.appendChild(node);
   }
   let template = document.getElementById("tempGlob");
   let node = template.content.firstElementChild.cloneNode(true);
   node.querySelector("#imagen").setAttribute("src", "./img/Yellow_Circle.png");
-  node.querySelector("#imagen").setAttribute("tipo", "amarillo");
+  node.setAttribute("tipo", "amarillo");
   node.addEventListener("click", (event) => {
-    if (tiempo <= 3000) {
-      multiplicador = 2;
-    }
+    multiplicador = 2;
     seccion.removeChild(node);
   });
   node.style.top = CSS.percent(Math.random() * 80);
-  node.style.right = CSS.percent(Math.random() * 95);
+  node.style.left = CSS.percent(Math.random() * 95);
   seccion.appendChild(node);
 }
 function moverGlobos() {
+  tiempo += 100;
   seccion.childNodes.forEach((node) => {
     let vertical = ["top", "bottom"];
     let horizontal = ["right", "left"];
@@ -67,11 +66,14 @@ function moverGlobos() {
     moverHorizontal(node, horizontal[Math.round(Math.random())]);
     moverVertical(node, vertical[Math.round(Math.random())]);
 
-    tiempo += 100;
+    if (tiempo > 3000 && node.getAttribute("tipo") === "amarillo") {
+      seccion.removeChild(node);
+    }
   });
   if (comprobarVerdes() && !ejecutado) {
-    let puntuacion =
-      (1000 / (tiempo / 1000) + puntos * 10 - fallos * 5) * multiplicador;
+    let puntuacion = parseInt(
+      (1000 / (tiempo / 1000) + puntos * 10 - fallos * 5) * multiplicador
+    );
     localStorage.setItem(PUNTUACION, puntuacion);
     alert(`Tu puntuacion es: ${puntuacion}`);
     ejecutado = true;
@@ -83,17 +85,17 @@ function comprobarVerdes() {
 }
 function moverHorizontal(node, direccion) {
   if (direccion === "left" && parseFloat(node.style.left) <= 97) {
-    node.style.left = (parseFloat(node.style.left) || 0) + 0.1 + "%";
+    node.style.left = (parseFloat(node.style.left) || 0) + 0.5 + "%";
   }
   if (direccion === "right" && parseFloat(node.style.left) >= 0) {
-    node.style.left = (parseFloat(node.style.left) || 0) - 0.1 + "%";
+    node.style.left = (parseFloat(node.style.left) || 0) - 0.5 + "%";
   }
 }
 function moverVertical(node, direccion) {
   if (direccion === "top" && parseFloat(node.style.top) <= 97) {
-    node.style.top = (parseFloat(node.style.top) || 0) + 0.1 + "%";
+    node.style.top = (parseFloat(node.style.top) || 0) + 0.5 + "%";
   }
   if (direccion === "bottom" && parseFloat(node.style.top) >= 0) {
-    node.style.top = (parseFloat(node.style.top) || 0) - 0.1 + "%";
+    node.style.top = (parseFloat(node.style.top) || 0) - 0.5 + "%";
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./js/main.js" type="module"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Shipwreck</h2>
+    <form id="config">
+      <label>Filas: <input type="number" id="filas" value="5" /></label
+      ><br /><br />
+      <label
+        >Columnas:
+        <input type="number" id="columnas" value="5" /></label
+      ><br /><br />
+      <label>Velocidad del Hunter: <input type="number" id="velHun" value="200" /></label
+      ><br /><br />
+      <label>Numero de trampas: <input type="number" id="trampas" value="1" /></label
+      ><br /><br />
+
+      <button id="crear">Crear Grid</button>
+    </form>
+
+    <div id="vidas">Vidas: <span id="vidas-num">3</span></div>
+    <div id="grid"></div>
+</html>
