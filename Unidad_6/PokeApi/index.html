@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>PokeApi</title>
+  </head>
+  <body>
+    <header>
+      <nav id="navBar">
+        <button id="btnBattle">Battle</button>
+        <button id="btnTeam">Team</button>
+        <button id="btnHistoric">Historic</button>
+        <button id="btnImport">Import</button>
+      </nav>
+    </header>
+    <main>
+      <section id="sectionBattle">
+        <section id="sectionPokemon">
+          <label id="damageBattlePokemon">120</label>
+          <figure id="figureBattlePokemon">
+            <img
+              id="imgBattlePokemon"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+              alt="pikachu"
+            />
+          </figure>
+          <progress id="progressHealth" max="100" value="40"></progress>
+        </section>
+        <section id="sectionYo">
+          <section id="accionesYo">
+            <button id="btnEscapar">Escapar</button>
+            <button id="btnAtacar">Atacar</button>
+            <button id="btnCapturar">Capturar</button>
+          </section>
+          <progress id="progressHealth" value="60" max="100"></progress>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
