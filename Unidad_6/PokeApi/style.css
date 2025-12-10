@@ -97,7 +97,7 @@ body {
   flex-direction: row;
   justify-self: center;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 4%;
   button {
     background-color: lightblue;
     font-size: xxx-large;
@@ -111,6 +111,7 @@ section {
   margin-top: 2%;
 }
 #sectionBattle {
+  display: none;
   font-size: xxx-large;
 
   #sectionPokemon {
@@ -149,30 +150,39 @@ section {
   }
   #sectionYo {
     position: absolute;
-    bottom: 2%;
-    width: 200%;
-    height: 4.7em;
-    background: linear-gradient(black, white);
+    bottom: 0;
+    width: 50%;
+    height: 6em;
+    background: linear-gradient(to top, black, white);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+    border: 4px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 1em;
+    row-gap: 1.5em;
     #accionesYo {
+      width: 80%;
       display: flex;
       flex-direction: row;
-
       justify-content: space-between;
+
       #btnEscapar,
       #btnCapturar {
+        color: white;
+        background-color: blueviolet;
         font-size: xx-large;
         padding: 0.3em;
       }
+      #btnEscapar {
+        background-color: crimson;
+      }
       #btnAtacar {
+        color: white;
         font-size: xxx-large;
         padding: 0.5em;
+        background-color: darkcyan;
       }
     }
 
