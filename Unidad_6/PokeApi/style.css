@@ -111,9 +111,9 @@ section {
   margin-top: 2%;
 }
 #sectionBattle {
-  display: none;
+  display: flex;
   font-size: xxx-large;
-
+  margin-top: 0%;
   #sectionPokemon {
     width: 100%;
     justify-content: center;
@@ -199,6 +199,32 @@ section {
 
     #progressHealth::-webkit-progress-value {
       background: blue;
+    }
+  }
+}
+#sectionTeam {
+  font-size: xx-large;
+  display: none;
+  width: 70%;
+  flex-direction: row;
+  .cardPokeTeam {
+    justify-items: center;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 10em;
+    figure {
+      width: 60%;
+      margin-bottom: 1em;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+      }
+    }
+    label {
+      padding: 5%;
+      background-color: white;
+      border: 2px solid black;
     }
   }
 }
