@@ -1,0 +1,52 @@
+var express = require("express");
+var router = express.Router();
+
+let Libro = require("../models/libro");
+const arrayLibros = [{ id: 0, titulo: "Mi Libro", autor: "Yo", anio: 2003 }];
+let contador = 1;
+
+router.get("/", function (req, res, next) {
+  res.json(arrayLibros);
+});
+
+router.post("/", function (req, res, next) {
+  const nuevo = JSON.parse(req.body);
+  const libro = new Libro(contador, nuevo.titulo, nuevo.autor, nuevo.anio);
+  arrayLibros.push(libro);
+  contador++;
+  res.status(201).json(true);
+});
+
+router.delete("/:id", (req, res) => {
+  let arrayLibrosFiltrado = arrayLibros.filter(
+    (x) => parseInt(x.id) !== parseInt(req.params.id)
+  );
+  if (arrayLibrosFiltrado.length === arrayLibros.length) {
+    res.status(404).send("Not Found");
+  } else {
+    arrayLibros = arrayLibrosFiltrado;
+    res.send(true);
+  }
+});
+
+router.put("/:id", (req, res) => {
+  let libro = undefined;
+  for (let index = 0; index < arrayLibros.length; index++) {
+    if (parseInt(req.params.id) === arrayLibros[index].id) {
+      libro = new Libro(
+        arrayLibros[index].id,
+        req.body.titulo,
+        req.body.autor,
+        req.body.anio
+      );
+      arrayLibros[index] = libro;
+      res.json(libro);
+    }
+  }
+
+  if (!libro) {
+    res.status(404).send("Not Found");
+  }
+});
+
+module.exports = router;

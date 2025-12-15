@@ -1,7 +1,14 @@
 import { Pokemon } from "../models/Pokemon.js";
 
 export class Facade {
-  constructor() {}
+  constructor() {
+    this.imagen = document.getElementById("imgBattlePokemon");
+    this.foto =
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/132.png";
+    this.hp = 48;
+    this.damage = 48;
+    this.pokemonSelected = new Pokemon(this.foto, this.hp, this.damage);
+  }
   cambiarDisplay(tipo) {
     let seccion = document.getElementById(tipo);
     document.querySelectorAll("main>section").forEach((element) => {
@@ -13,16 +20,12 @@ export class Facade {
     });
   }
   generarPokemon() {
-    let imagen = document.getElementById("imgBattlePokemon");
-    let pokemon = this.recogerPokemon();
+    this.recogerPokemon();
+    this.imagen.src = this.pokemonSelected.url;
   }
-  recogerPokemon() {
-    let foto = null;
-    let pokemonSelected = new Pokemon(foto);
-    fetch(
-      //${Math.floor(Math.random() * 1025)}
-      `https://pokeapi.co/api/v2/pokemon/694`
-    )
+  async recogerPokemon() {
+    let numero = Math.floor(Math.random() * 1025);
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${numero}`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error("Something went wrong on API server!");
@@ -30,11 +33,17 @@ export class Facade {
         return response.json();
       })
       .then((response) => {
-        for (const pokemon of response.results) {
-          foto = pokemon.sprites.front_default;
-          pokemonSelected = new Pokemon(foto);
-        }
+        this.foto = response.sprites.front_default;
+        this.hp = response.stats.filter(
+          (p) => p.stat.name === "hp"
+        )[0].base_stat;
+        this.damage = response.stats.filter(
+          (p) => p.stat.name === "attack"
+        )[0].base_stat;
+        this.pokemonSelected = new Pokemon(foto, damage, hp);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    return pokemonSelected;
   }
 }
