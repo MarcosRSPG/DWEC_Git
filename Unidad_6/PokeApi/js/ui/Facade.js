@@ -1,3 +1,5 @@
+import { Pokemon } from "../models/Pokemon.js";
+
 export class Facade {
   constructor() {}
   cambiarDisplay(tipo) {
@@ -15,8 +17,11 @@ export class Facade {
     let pokemon = this.recogerPokemon();
   }
   recogerPokemon() {
+    let foto = null;
+    let pokemonSelected = new Pokemon(foto);
     fetch(
-      `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1025)}`
+      //${Math.floor(Math.random() * 1025)}
+      `https://pokeapi.co/api/v2/pokemon/694`
     )
       .then((response) => {
         if (response.status !== 200) {
@@ -25,7 +30,11 @@ export class Facade {
         return response.json();
       })
       .then((response) => {
-        this.pokemonSelected = new Pokemon(response.sprites.front_default);
+        for (const pokemon of response.results) {
+          foto = pokemon.sprites.front_default;
+          pokemonSelected = new Pokemon(foto);
+        }
       });
+    return pokemonSelected;
   }
 }
