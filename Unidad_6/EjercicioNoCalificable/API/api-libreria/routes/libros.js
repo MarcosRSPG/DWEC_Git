@@ -10,8 +10,12 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const nuevo = req.body;
-  const libro = new Libro(contador, nuevo.titulo, nuevo.autor, nuevo.anio);
+  const libro = new Libro(
+    contador,
+    req.body.titulo,
+    req.body.autor,
+    req.body.anio
+  );
   arrayLibros.push(libro);
   contador++;
   res.status(201).json(true);
