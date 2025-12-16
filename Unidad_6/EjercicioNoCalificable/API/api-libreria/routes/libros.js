@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 let Libro = require("../models/libro");
-const arrayLibros = [{ id: 0, titulo: "Mi Libro", autor: "Yo", anio: 2003 }];
+let arrayLibros = [{ id: 0, titulo: "Mi Libro", autor: "Yo", anio: 2003 }];
 let contador = 1;
 
 router.get("/", function (req, res, next) {
@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const nuevo = JSON.parse(req.body);
+  const nuevo = req.body;
   const libro = new Libro(contador, nuevo.titulo, nuevo.autor, nuevo.anio);
   arrayLibros.push(libro);
   contador++;
