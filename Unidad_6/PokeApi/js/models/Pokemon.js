@@ -1,5 +1,6 @@
 export class Pokemon {
-  constructor(url, damage, health) {
+  constructor(name, url, damage, health) {
+    this.name = name;
     this.url = url;
     this.damage = damage;
     this.health = health;

@@ -3,27 +3,20 @@ var router = express.Router();
 
 let Libro = require("../models/libro");
 let arrayLibros = [{ id: 0, titulo: "Mi Libro", autor: "Yo", anio: 2003 }];
-let contador = 1;
 
 router.get("/", function (req, res, next) {
   res.json(arrayLibros);
 });
 
 router.post("/", function (req, res, next) {
-  const libro = new Libro(
-    contador,
-    req.body.titulo,
-    req.body.autor,
-    req.body.anio
-  );
+  const libro = new Libro(req.body.titulo, req.body.autor, req.body.anio);
   arrayLibros.push(libro);
-  contador++;
   res.status(201).json(true);
 });
 
 router.delete("/:id", (req, res) => {
   let arrayLibrosFiltrado = arrayLibros.filter(
-    (x) => parseInt(x.id) !== parseInt(req.params.id)
+    (x) => x.id.toString() !== req.params.id
   );
   if (arrayLibrosFiltrado.length === arrayLibros.length) {
     res.status(404).send("Not Found");

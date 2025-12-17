@@ -5,6 +5,8 @@ const facade = new Facade();
 const btnBattle = document.getElementById("btnBattle");
 const btnTeam = document.getElementById("btnTeam");
 
+facade.generarPokemon();
+
 btnBattle.addEventListener("click", (event) => {
   event.preventDefault();
   facade.cambiarDisplay("sectionBattle");
