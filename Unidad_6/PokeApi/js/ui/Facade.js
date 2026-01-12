@@ -2,8 +2,13 @@ import { Pokemon } from "../models/Pokemon.js";
 
 export class Facade {
   constructor() {
+    this.vidaYo = 400;
+    this.vidaYoTotal = 400;
     this.imagenDOM = document.getElementById("imgBattlePokemon");
-    this.hpDOM = document.getElementById("progressHealth");
+    this.hpDOMYo = document.querySelector("#sectionYo #progressHealth");
+    this.hpDOMPokemon = document.querySelector(
+      "#sectionPokemon #progressHealth"
+    );
     this.damageDOM = document.getElementById("damageBattlePokemon");
     this.foto =
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/132.png";
@@ -22,10 +27,7 @@ export class Facade {
     await this.recogerPokemon();
     this.imagenDOM.src = this.pokemonSelected.url;
     this.imagenDOM.alt = this.pokemonSelected.name;
-    this.hpDOM.setAttribute(
-      "value",
-      (this.pokemonSelected.health / this.hp) * 100
-    );
+    this.pintarVidas();
     this.damageDOM.textContent = this.pokemonSelected.damage;
   }
   async recogerPokemon() {
@@ -57,5 +59,21 @@ export class Facade {
         console.log(error);
       });
   }
-  pintarVida() {}
+  pintarVidas() {
+    this.hpDOMYo.setAttribute("value", (this.vidaYo / this.vidaYoTotal) * 100);
+    this.hpDOMPokemon.setAttribute(
+      "value",
+      (this.pokemonSelected.health / this.hp) * 100
+    );
+  }
+  quitarVida(tipo) {
+    switch (tipo) {
+      case "yo":
+        this.vidaYo -= this.pokemonSelected.damage;
+        this.pintarVidas();
+      case "pokemon":
+        this.pokemonSelected.restarVida(Math.random() * 20);
+        this.pintarVidas();
+    }
+  }
 }
