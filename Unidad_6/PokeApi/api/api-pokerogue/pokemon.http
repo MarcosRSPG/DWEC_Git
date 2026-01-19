@@ -1,0 +1,148 @@
+GET http://localhost:6968/historial
+Accept: application/json
+###
+POST http://localhost:6968/historial
+Content-Type: application/json
+
+{
+  "arrayPokemons": [
+    {
+      "DateStart": "2026/01/10 18:05",
+      "DateEnd": "2026/01/10 18:12",
+      "PokeName": "Pidgey",
+      "DamageDoneTrainer": 74,
+      "DamageReceivedTrainer": 18,
+      "DamageDonePokemon": 35,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/10 18:20",
+      "DateEnd": "2026/01/10 18:31",
+      "PokeName": "Rattata",
+      "DamageDoneTrainer": 132,
+      "DamageReceivedTrainer": 41,
+      "DamageDonePokemon": 68,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/11 09:02",
+      "DateEnd": "2026/01/11 09:10",
+      "PokeName": "Caterpie",
+      "DamageDoneTrainer": 55,
+      "DamageReceivedTrainer": 7,
+      "DamageDonePokemon": 0,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/11 09:25",
+      "DateEnd": "2026/01/11 09:41",
+      "PokeName": "Weedle",
+      "DamageDoneTrainer": 168,
+      "DamageReceivedTrainer": 63,
+      "DamageDonePokemon": 91,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/12 16:14",
+      "DateEnd": "2026/01/12 16:29",
+      "PokeName": "Spearow",
+      "DamageDoneTrainer": 210,
+      "DamageReceivedTrainer": 58,
+      "DamageDonePokemon": 44,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/12 16:40",
+      "DateEnd": "2026/01/12 16:55",
+      "PokeName": "Ekans",
+      "DamageDoneTrainer": 243,
+      "DamageReceivedTrainer": 92,
+      "DamageDonePokemon": 120,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/13 12:03",
+      "DateEnd": "2026/01/13 12:15",
+      "PokeName": "Sandshrew",
+      "DamageDoneTrainer": 188,
+      "DamageReceivedTrainer": 37,
+      "DamageDonePokemon": 23,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/13 12:30",
+      "DateEnd": "2026/01/13 12:46",
+      "PokeName": "Zubat",
+      "DamageDoneTrainer": 275,
+      "DamageReceivedTrainer": 104,
+      "DamageDonePokemon": 143,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/14 19:10",
+      "DateEnd": "2026/01/14 19:24",
+      "PokeName": "Oddish",
+      "DamageDoneTrainer": 198,
+      "DamageReceivedTrainer": 26,
+      "DamageDonePokemon": 0,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/14 19:40",
+      "DateEnd": "2026/01/14 19:58",
+      "PokeName": "Paras",
+      "DamageDoneTrainer": 312,
+      "DamageReceivedTrainer": 110,
+      "DamageDonePokemon": 167,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/15 08:15",
+      "DateEnd": "2026/01/15 08:27",
+      "PokeName": "Psyduck",
+      "DamageDoneTrainer": 221,
+      "DamageReceivedTrainer": 49,
+      "DamageDonePokemon": 31,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/15 08:45",
+      "DateEnd": "2026/01/15 09:03",
+      "PokeName": "Mankey",
+      "DamageDoneTrainer": 340,
+      "DamageReceivedTrainer": 138,
+      "DamageDonePokemon": 192,
+      "Catch": false
+    },
+    {
+      "DateStart": "2026/01/16 17:05",
+      "DateEnd": "2026/01/16 17:20",
+      "PokeName": "Growlithe",
+      "DamageDoneTrainer": 260,
+      "DamageReceivedTrainer": 71,
+      "DamageDonePokemon": 14,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/16 17:35",
+      "DateEnd": "2026/01/16 17:54",
+      "PokeName": "Poliwag",
+      "DamageDoneTrainer": 295,
+      "DamageReceivedTrainer": 83,
+      "DamageDonePokemon": 0,
+      "Catch": true
+    },
+    {
+      "DateStart": "2026/01/17 21:11",
+      "DateEnd": "2026/01/17 21:33",
+      "PokeName": "Machop",
+      "DamageDoneTrainer": 410,
+      "DamageReceivedTrainer": 176,
+      "DamageDonePokemon": 248,
+      "Catch": false
+    }
+  ]
+}
+###
+DELETE http://localhost:6968/historial/
+Accept: application/json
