@@ -7,7 +7,7 @@ export class Facade {
     this.imagenDOM = document.getElementById("imgBattlePokemon");
     this.hpDOMYo = document.querySelector("#sectionYo #progressHealth");
     this.hpDOMPokemon = document.querySelector(
-      "#sectionPokemon #progressHealth"
+      "#sectionPokemon #progressHealth",
     );
     this.damageDOM = document.getElementById("damageBattlePokemon");
     this.foto =
@@ -21,6 +21,7 @@ export class Facade {
     let seccion = document.getElementById(tipo);
     document.querySelectorAll("main>section").forEach((element) => {
       element.style.display = element === seccion ? "flex" : "none";
+      element.style.visibility = element === seccion ? 1 : 0;
     });
   }
   async generarPokemon() {
@@ -43,17 +44,62 @@ export class Facade {
         this.name = response.forms[0].name;
         this.foto = response.sprites.front_default;
         this.hp = response.stats.filter(
-          (p) => p.stat.name === "hp"
+          (p) => p.stat.name === "hp",
         )[0].base_stat;
         this.damage = response.stats.filter(
-          (p) => p.stat.name === "attack"
+          (p) => p.stat.name === "attack",
         )[0].base_stat;
         this.pokemonSelected = new Pokemon(
           this.name,
           this.foto,
           this.damage,
-          this.hp
+          this.hp,
         );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  async cargarEquipo() {
+    await fetch(`http://localhost:6968/equipo`)
+      .then((response) => {
+        if (response.status !== 200 && response.status !== 201) {
+          throw new Error("Something went wrong on API server!");
+        }
+        return response.json();
+      })
+      .then((response) => {
+        const section = document.getElementById("sectionTeam");
+        const template = document.getElementById("templateTeam");
+
+        section.querySelectorAll(".cardPokeTeam").forEach((n) => n.remove());
+        response.forEach((p) => {
+          fetch(p.url)
+            .then((response) => {
+              if (response.status !== 200) {
+                throw new Error("Something went wrong on API server!");
+              }
+              return response.json();
+            })
+            .then((response) => {
+              const name = response.forms[0].name;
+              const foto = response.sprites.front_default;
+
+              const clone = template.content.cloneNode(true);
+              const img = clone.querySelector("#imgPokemonEquipo");
+              const label = clone.querySelector("#nivelEquipo");
+
+              img.src = foto;
+              img.alt = name;
+
+              label.textContent = `HP ${p.health} · ATK ${p.damage}`;
+
+              section.appendChild(clone);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -63,7 +109,7 @@ export class Facade {
     this.hpDOMYo.setAttribute("value", (this.vidaYo / this.vidaYoTotal) * 100);
     this.hpDOMPokemon.setAttribute(
       "value",
-      (this.pokemonSelected.health / this.hp) * 100
+      (this.pokemonSelected.health / this.hp) * 100,
     );
   }
   quitarVida(tipo) {

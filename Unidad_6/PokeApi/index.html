@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,44 +36,14 @@
       </section>
 
       <section id="sectionTeam">
-        <card class="cardPokeTeam">
-          <figure>
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
-              alt="charizard-shiny"
-            />
-          </figure>
-          <label>Lvl 5</label>
-        </card>
-        <card class="cardPokeTeam">
-          <figure>
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
-              alt="charizard-shiny"
-            />
-          </figure>
-          <label>Lvl 5</label>
-        </card>
-      </section>
-      <section id="sectionHistoric">
-        <card class="cardPokeTeam">
-          <figure>
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
-              alt="charizard-shiny"
-            />
-          </figure>
-          <label>Lvl 5</label>
-        </card>
-        <card class="cardPokeTeam">
-          <figure>
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
-              alt="charizard-shiny"
-            />
-          </figure>
-          <label>Lvl 5</label>
-        </card>
+        <template id="templateTeam">
+          <card class="cardPokeTeam">
+            <figure>
+              <img id="imgPokemonEquipo" src="" alt="" />
+            </figure>
+            <label id="nivelEquipo"></label>
+          </card>
+        </template>
       </section>
     </main>
   </body>

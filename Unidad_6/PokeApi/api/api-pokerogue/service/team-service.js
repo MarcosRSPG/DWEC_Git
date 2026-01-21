@@ -1,18 +1,18 @@
 // docker run --name db_mongo_dwec -e MONGO_INITDB_ROOT_USERNAME=MarcosDB -e MONGO_INITDB_ROOT_PASSWORD=mpwd -e MONGO_INITDB_DATABASE=TaskDB -p 6969:27017 -v VolumenContainer:/data/db -d mongo:8-noble
 
 require("dotenv").config();
-const Historial = require("../models/HistorialModel");
+const Pokemon = require("../models/PokemonModel");
 const { MongoClient, ObjectId } = require("mongodb");
 const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}`;
 const client = new MongoClient(uri);
 
-class HistorialService {
+class TeamService {
   static async get() {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
-      const result = await historico.find().toArray();
+      const equipo = database.collection("equipo");
+      const result = await equipo.find().toArray();
       return result;
     } catch (error) {
     } finally {
@@ -23,70 +23,44 @@ class HistorialService {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
+      const equipo = database.collection("equipo");
       const filter = { _id: new ObjectId(id) };
-      const result = await historico.findOne(filter);
+      const result = await equipo.findOne(filter);
       return result;
     } catch (error) {
     } finally {
       await client.close();
     }
   }
-  static async post(arrayHistoricos) {
+  static async post(arrayEquipos) {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
+      const equipo = database.collection("equipo");
 
       const results = [];
-      for (const h of arrayHistoricos) {
-        const newHistorico = new Historial(
-          h.DateStart,
-          h.DateEnd,
-          h.PokeName,
-          h.DamageDoneTrainer,
-          h.DamageReceivedTrainer ?? h.DamageRecivedTrainer,
-          h.DamageDonePokemon,
-          h.Catch ?? h.captured,
-        );
-
-        const r = await historico.insertOne(newHistorico);
+      for (const h of arrayEquipos) {
+        const newEquipo = new Pokemon(h.name, h.url, h.damage, h.health);
+        const r = await equipo.insertOne(newEquipo);
         results.push(r);
       }
       return results;
     } catch (error) {
-      console.error("HistorialService.post error:", error);
+      console.error("TeamService.post error:", error);
       throw error;
     } finally {
       await client.close();
     }
   }
 
-  static async put(
-    id,
-    dataStart,
-    dataEnd,
-    pokeName,
-    damageDoneTrainer,
-    damageRecivedTrainer,
-    damageDonePokemon,
-    captured,
-  ) {
+  static async put(id, name, url, damage, health) {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
+      const equipo = database.collection("equipo");
       const filter = { _id: new ObjectId(id) };
-      const newHistorico = new Historial(
-        dataStart,
-        dataEnd,
-        pokeName,
-        damageDoneTrainer,
-        damageRecivedTrainer,
-        damageDonePokemon,
-        captured,
-      );
-      const result = await historico.replaceOne(filter, newHistorico);
+      const newEquipo = new Pokemon(name, url, damage, health);
+      const result = await equipo.replaceOne(filter, newEquipo);
       return result;
     } catch (error) {
     } finally {
@@ -97,9 +71,9 @@ class HistorialService {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
+      const equipo = database.collection("equipo");
       const filter = { _id: new ObjectId(id) };
-      const result = await historico.deleteOne(filter);
+      const result = await equipo.deleteOne(filter);
       return result;
     } catch (error) {
     } finally {
@@ -110,8 +84,8 @@ class HistorialService {
     try {
       await client.connect();
       const database = client.db("pokemon");
-      const historico = database.collection("historico");
-      const result = await historico.deleteMany({});
+      const equipo = database.collection("equipo");
+      const result = await equipo.deleteMany({});
       return result;
     } catch (error) {
     } finally {
@@ -120,4 +94,4 @@ class HistorialService {
   }
 }
 
-module.exports = HistorialService;
+module.exports = TeamService;

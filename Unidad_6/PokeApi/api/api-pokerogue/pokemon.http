@@ -1,6 +1,9 @@
 GET http://localhost:6968/historial
 Accept: application/json
 ###
+GET http://localhost:6968/equipo
+Accept: application/json
+###
 POST http://localhost:6968/historial
 Content-Type: application/json
 
