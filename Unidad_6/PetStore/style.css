@@ -108,6 +108,7 @@ header {
   height: auto;
 }
 footer {
+  position: static;
   bottom: 0;
   position: absolute;
   height: 10rem;
@@ -120,7 +121,7 @@ figure {
   margin: 20px 20px;
 }
 img {
-  width: 90%;
+  width: 100%;
   height: auto;
   object-fit: fill;
 }
@@ -144,38 +145,50 @@ h3 {
   font-size: x-large;
   align-self: center;
 }
-#formLogin {
+form {
   display: flex;
   flex-direction: column;
   justify-items: space-between;
   justify-self: center;
-  margin-top: 7%;
+  margin-top: 5%;
   background-color: white;
   padding: 1.5em;
-  border-radius: 10%;
-  -webkit-border-radius: 10%;
-  -moz-border-radius: 10%;
-  -ms-border-radius: 10%;
-  -o-border-radius: 10%;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -o-border-radius: 1em;
   input,
   label {
     margin: 2%;
     display: block;
     font-size: xx-large;
   }
+  #submit {
+    height: 5rem;
+  }
 }
-#submitLogin {
-  height: 5rem;
+#crearPet {
+  display: block;
+  padding: 1em;
+  font-size: xx-large;
+  background: linear-gradient(to left, #0086df, #ffffff);
+  margin-top: 2em;
+  justify-self: center;
+}
+#crearPet:hover {
+  transform: scale(1.1);
 }
 #listaPets {
   display: flex;
+  max-height: 30em;
 }
-#cardPet {
-  border-radius: 10%;
-  -webkit-border-radius: 10%;
-  -moz-border-radius: 10%;
-  -ms-border-radius: 10%;
-  -o-border-radius: 10%;
+card {
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -o-border-radius: 1em;
 
   -webkit-box-shadow:
     5px 5px 0px 0px #289fed,
@@ -194,7 +207,7 @@ h3 {
 
   background-color: white;
   margin: 2%;
-  max-width: 10%;
+  max-width: 15%;
   padding: 1%;
   text-align: center;
   p {
@@ -204,5 +217,71 @@ h3 {
   h4 {
     margin-top: 0.5em;
     font-size: x-large;
+  }
+  #figurePet {
+    height: 30%;
+    justify-self: center;
+    overflow: hidden;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+}
+#cabeceraPet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  margin-bottom: 2em;
+
+  #namePet {
+    flex: 1;
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  #btnCerrarPet {
+    background: red;
+    width: 2em;
+    height: 2em;
+    color: white;
+  }
+
+  #btnEditarPet {
+    background: orange;
+    width: 2em;
+    height: 2em;
+  }
+
+  #btnCerrarPet:hover,
+  #btnEditarPet:hover {
+    transform: scale(1.1);
+  }
+}
+
+#formPet {
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  justify-content: space-between;
+  width: 40%;
+  gap: 2em;
+  flex-direction: row;
+  #figurePet {
+    justify-self: center;
+    width: 50%;
+  }
+  input,
+  label,
+  select {
+    width: 100%;
+    margin: 2%;
+    display: block;
+    font-size: x-large;
+  }
+  #submit {
+    height: 4rem;
+    width: 100%;
   }
 }

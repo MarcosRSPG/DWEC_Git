@@ -1,0 +1,44 @@
+GET http://localhost:4367/pets
+Accept: application/json 
+###
+GET http://localhost:4367/pets/6972aec22c37515f2d121a32
+Accept: application/json 
+
+###
+POST http://localhost:4367/pets
+Content-Type: application/json
+
+[
+    {
+    "name": "Li",
+    "owner": "Marcos",
+    "race": "Panda",
+    "state": "Sold",
+    "age": 21,
+    "photo": "./img/imgPets/panda.jpg"
+    },
+    {
+    "name": "Perry",
+    "owner": "Marcos",
+    "race": "Ornitorrinco",
+    "state": "Pending",
+    "age": 5,
+    "photo": "./img/imgPets/ornitorrinco.jpg"
+    },
+    {
+    "name": "Doris",
+    "owner": "Marcos",
+    "race": "Mapache",
+    "state": "Available",
+    "age": 3,
+    "photo": "./img/imgPets/mapache.jpg"
+    },
+    {
+    "name": "Gilberto",
+    "owner": "Marcos",
+    "race": "Owlbear",
+    "state": "Available",
+    "age": 5,
+    "photo": "./img/imgPets/owlbear.jpg"
+    }
+]

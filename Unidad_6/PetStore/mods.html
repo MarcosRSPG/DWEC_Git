@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./js/main.js" type="module"></script>
+    <title>Modifications</title>
+  </head>
+  <body>
+    <header>
+      <figure id="figureComercio">
+        <a href="./index.html">
+          <img
+            id="imgComercio"
+            alt="Icono Comercio"
+            src="./img/iconoComercio.ico"
+          />
+        </a>
+      </figure>
+      <h1>PetStore</h1>
+    </header>
+    <main>
+      <form id="formPet">
+        <figure id="figurePet">
+          <img id="imgPet" src="img/iconoComercio.ico" alt="iconoComercio" />
+        </figure>
+        <section id="datosPet">
+          <label for="inputNombre" id="lblNombre">Nombre:</label>
+          <input
+            type="text"
+            id="inputNombre"
+            required
+            autocomplete="nickname"
+          />
+          <label for="inputRace" id="lblRace">Raza:</label>
+          <input type="text" id="inputRace" required />
+          <label for="inputAge" id="lblAge">Edad:</label>
+          <input type="number" id="inputAge" min="0" required />
+          <label for="selectState" id="lblState">Estado:</label>
+          <select id="selectState">
+            <option id="available">Available</option>
+            <option id="pending">Pending</option>
+            <option id="sold">Sold</option>
+          </select>
+          <label for="inputOwner" id="lblOwner">Propietario:</label>
+          <input type="text" id="inputOwner" required />
+          <input type="file" id="filePet" accept="image/*" hidden />
+          <input type="submit" id="submit" value="Done" />
+        </section>
+      </form>
+    </main>
+    <footer>
+      <figure id="figureComercio">
+        <a href="./index.html">
+          <img id="" alt="" src="" />
+        </a>
+      </figure>
+      <section>
+        <h2>Contacto:</h2>
+        <ul>
+          <li><h3>652719741</h3></li>
+          <li><h3>marcosrs.softwaredeveloper@gmail.com</h3></li>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

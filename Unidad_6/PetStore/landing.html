@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script defer src="./js/main.js" type="module"></script>
     <title>PetStore</title>
   </head>
   <body>
@@ -20,9 +21,13 @@
       <h1>PetStore</h1>
     </header>
     <main>
-      <template></template>
-      <section id="listaPets">
-        <card id="cardPet">
+      <template id="templatePets"> 
+        <card class="cardPet">
+          <section id="cabeceraPet">
+            <h3 id="namePet"></h3>
+            <button id="btnEditarPet">✏️</button>
+            <button id="btnCerrarPet">X</button>
+          </section>
           <figure id="figurePet">
               <img
                 id="imgPet"
@@ -31,34 +36,14 @@
               />
             </a>
           </figure>
-          <p>Mascota 1</p>
-          <h4>Estado 1</h4>
+          <p>Raza: <span id="race"></span></p>
+          <p>Edad: <span id="age"></span></p>
+          <p>Owner: <span id="owner"></span></p>
+          <h4>Estado: <span id="state"></span></h4>
         </card>
-        <card id="cardPet">
-          <figure id="figurePet">
-              <img
-                id="imgPet"
-                alt="Icono Comercio"
-                src="./img/iconoComercio.ico"
-              />
-            </a>
-          </figure>
-          <p>Mascota 1</p>
-          <h4>Estado 1</h4>
-        </card>
-        <card id="cardPet">
-          <figure id="figurePet">
-              <img
-                id="imgPet"
-                alt="Icono Comercio"
-                src="./img/iconoComercio.ico"
-              />
-            </a>
-          </figure>
-          <p>Mascota 1</p>
-          <h4>Estado 1</h4>
-        </card>
-      </section>
+      </template>
+      <section id="listaPets"></section>
+      <button id="crearPet">NUEVA MASCOTA</button>
     </main>
     <footer>
       <figure id="figureComercio">
