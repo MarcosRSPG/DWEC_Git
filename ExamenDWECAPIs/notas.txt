@@ -1,0 +1,22 @@
+
+TODO ALUMNADO (sin frameworks):
+1) Login:
+   - POST /login
+   - Guardar token y admin en storage
+   - Redirigir a productos.html
+
+2) Productos:
+   - GET /products con Authorization: Bearer <token>
+   - Pintar tarjetas en #productList
+   - POST /products al enviar el formulario
+   - Si admin, mostrar enlace/botón a admin.html
+
+3) Admin:
+   - Comprobar isAdmin o campo devuelto en login
+   - GET /products y mostrar lista completa
+   - DELETE /products/:id al pulsar eliminar
+
+4) Logging:
+   - Capturar errores y enviarlos a POST /log
+   - level recomendado: "error" | "warn" | "info"
+``

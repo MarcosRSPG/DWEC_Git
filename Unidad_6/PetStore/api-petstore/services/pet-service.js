@@ -1,9 +1,8 @@
-// docker run --name db_mongo_dwec -e MONGO_INITDB_ROOT_USERNAME=MarcosDB -e MONGO_INITDB_ROOT_PASSWORD=mpwd -e MONGO_INITDB_DATABASE=TaskDB -p 6969:27017 -v VolumenContainer:/data/db -d mongo:8-noble
+// docker run --name db_examen_mongo -e MONGO_INITDB_ROOT_USERNAME=MarcosDB -e MONGO_INITDB_ROOT_PASSWORD=mpwd -e MONGO_INITDB_DATABASE=TaskDB -p 6969:27017 -v VolumenContainer:/data/db -d mongo:8-noble
 
-require("dotenv").config();
 const Pet = require("../models/PetModel");
 const { MongoClient, ObjectId } = require("mongodb");
-const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}`;
+const uri = `mongodb://MarcosDB:mpwd@localhost:6969`;
 const client = new MongoClient(uri);
 
 class PetService {
