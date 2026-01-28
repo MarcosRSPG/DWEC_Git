@@ -1,0 +1,35 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+[
+{
+    "name": "admin",
+    "password": "1234",
+    "admin": false
+}
+]
+###
+DELETE http://localhost:3000/users/
+Accept: : application/json
+###
+GET http://localhost:3000/users
+Accept: application/json
+###
+POST http://localhost:3000/products
+Content-Type: application/json
+
+[
+{
+    "name": "Producto 1",
+    "description": "Descripcion buena",
+    "price": 54.8,
+    "user": {
+    "id": "6973cbb2a12b855e8c1ba8ce",
+    "name": "admin",
+    "dateCreation": "10/10/2006"
+}
+}
+]
+###
+GET http://localhost:3000/products
+Accept: application/json

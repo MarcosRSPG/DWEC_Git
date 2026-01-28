@@ -4,44 +4,24 @@ let UserService = require("../services/user-service");
 
 /* GET users listing. */
 router.get("/", async function (req, res, next) {
-  const arrayUsers = await UserService.get();
-  res.status(201).json(arrayUsers);
+  const response = await UserService.get();
+  res.status(200).json(response);
 });
 router.get("/:id", async function (req, res, next) {
   const user = await UserService.getById(req.params.id);
   res.status(201).json(user);
 });
+
 router.post("/", async function (req, res, next) {
   await UserService.post(req.body);
   res.status(201).json(true);
 });
-router.post("/login", async function (req, res, next) {
-  const result = await UserService.comprobarRecursos(req.body);
-  if (!result) {
-    return res.status(404).json({ ok: false, msg: "Credenciales incorrectas" });
-  }
 
-  // Si quieres devolver info (sin password):
-  return res
-    .status(200)
-    .json({ ok: true, user: { name: result.name, _id: result._id } });
+router.post("/login/", async function (req, res, next) {
+  const resultado = await UserService.comprobarCredenciales(req.body);
+  res.status(200).json(resultado);
 });
-router.put("/:id", async function (req, res, next) {
-  const user = await UserService.put(
-    req.params.id,
-    req.body.name,
-    req.body.owner,
-    req.body.race,
-    req.body.state,
-    req.body.age,
-    req.body.photo,
-  );
-  if (user.matchedCount === 1) {
-    res.status(201).json(user);
-  } else {
-    res.status(404).send("Not Found");
-  }
-});
+
 router.delete("/:id", async function (req, res, next) {
   const user = await UserService.delete(req.params.id);
   if (user.deletedCount === 1) {
@@ -50,7 +30,6 @@ router.delete("/:id", async function (req, res, next) {
     res.status(404).send("Not Found");
   }
 });
-module.exports = router;
 
 router.delete("/", async function (req, res, next) {
   const user = await UserService.deleteAll();
