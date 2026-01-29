@@ -1,0 +1,32 @@
+<form class="card" [formGroup]="applyForm" (submit)="submitCar()">
+  <h2>Vende tu coche</h2>
+
+  <label>
+    Marca
+    <input type="text" formControlName="brand" placeholder="Toyota" />
+  </label>
+
+  <label>
+    Modelo
+    <input type="text" formControlName="model" placeholder="Corolla" />
+  </label>
+
+  <div class="row">
+    <label>
+      Año
+      <input type="number" formControlName="year" placeholder="1990" />
+    </label>
+
+    <label>
+      Precio (€)
+      <input type="number" formControlName="price" placeholder="10000" />
+    </label>
+  </div>
+
+  <label>
+    Foto (URL .jpg/.jpeg/.png)
+    <input type="text" formControlName="photo" placeholder="https://..." />
+  </label>
+
+  <button type="submit" [routerLink]="['/selling-cars']">PONER A LA VENTA</button>
+</form>

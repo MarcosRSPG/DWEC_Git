@@ -1,4 +1,4 @@
-export class Car {
+class Car {
   constructor(brand, model, year, price, photo) {
     this.brand = brand;
     this.model = model;
@@ -7,3 +7,5 @@ export class Car {
     this.photo = photo;
   }
 }
+
+module.exports = Car;

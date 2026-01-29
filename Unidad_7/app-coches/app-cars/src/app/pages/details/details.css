@@ -1,0 +1,61 @@
+.car-photo {
+  height: 600px;
+  width: 50%;
+  object-fit: cover;
+  border-radius: 30px;
+  float: right;
+}
+.car-heading {
+  font-size: 48pt;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.car-model {
+  font-size: 24pt;
+  margin-bottom: 15px;
+}
+.car-features > .section-heading {
+  color: grey;
+  font-size: 24pt;
+  margin-bottom: 15px;
+}
+.car-features {
+  margin-bottom: 20px;
+}
+.car-features li {
+  font-size: 14pt;
+}
+li {
+  list-style-type: none;
+}
+.car-apply .section-heading {
+  font-size: 18pt;
+  margin-bottom: 15px;
+}
+label,
+input {
+  display: block;
+}
+label {
+  color: grey;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12pt;
+}
+input {
+  font-size: 16pt;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 400px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: solid 0.3px;
+}
+@media (max-width: 1024px) {
+  .car-photo {
+    width: auto;
+    height: 400px;
+  }
+}

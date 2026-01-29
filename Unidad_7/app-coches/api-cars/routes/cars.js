@@ -25,7 +25,7 @@ router.put("/:id", async function (req, res, next) {
     req.body.photo,
   );
   if (car.matchedCount === 1) {
-    res.status(200).json(car);
+    res.status(200).json(true);
   } else {
     res.status(404).send("Not Found");
   }
@@ -33,7 +33,7 @@ router.put("/:id", async function (req, res, next) {
 router.delete("/:id", async function (req, res, next) {
   const car = await CarService.delete(req.params.id);
   if (car.deletedCount === 1) {
-    res.status(200).json(car);
+    res.status(200).json(true);
   } else {
     res.status(404).send("Not Found");
   }
@@ -43,7 +43,7 @@ module.exports = router;
 router.delete("/", async function (req, res, next) {
   const car = await CarService.deleteAll();
   if (car.deletedCount >= 1) {
-    res.status(200).json(car);
+    res.status(200).json(true);
   } else {
     res.status(404).send("Not Found");
   }

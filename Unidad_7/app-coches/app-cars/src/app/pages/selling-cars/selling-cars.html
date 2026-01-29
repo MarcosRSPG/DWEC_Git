@@ -1,0 +1,44 @@
+<section>
+  <form id="filtros">
+    <section>
+      <input
+        type="text"
+        placeholder="Filter"
+        #filter
+        (keyup)="filterResults(filter.value, type.value, order.value, orientation.value)"
+      />
+      <select
+        id="filter"
+        #type
+        (change)="filterResults(filter.value, type.value, order.value, orientation.value)"
+      >
+        <option value="brand">Brand</option>
+        <option value="model">Model</option>
+      </select>
+    </section>
+    <section>
+      <label>Order by: </label>
+      <select
+        id="order"
+        #order
+        (change)="filterResults(filter.value, type.value, order.value, orientation.value)"
+      >
+        <option value="year">Year</option>
+        <option value="price">Price</option>
+      </select>
+      <select
+        id="orientation"
+        #orientation
+        (change)="filterResults(filter.value, type.value, order.value, orientation.value)"
+      >
+        <option value="asc">Asc</option>
+        <option value="des">Des</option>
+      </select>
+    </section>
+  </form>
+</section>
+<section class="results">
+  @for (car of listaFiltrada; track $index) {
+    <app-car-card [car]="car" />
+  }
+</section>

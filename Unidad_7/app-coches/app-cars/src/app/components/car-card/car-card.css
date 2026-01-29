@@ -1,0 +1,43 @@
+.car {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 30px;
+  padding-bottom: 30px;
+}
+.car-heading {
+  color: black;
+  padding: 10px 20px 0 20px;
+}
+.car-photo {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 30px 30px 0 0;
+}
+.car-year,
+.car-price {
+  padding: 10px 20px 20px 20px;
+}
+section.car a {
+  padding-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+section.car a::after {
+  content: '\203A';
+  margin-left: 5px;
+}
+section.car button {
+  padding: 2%;
+  width: 90%;
+  margin: 5% auto 0;
+  display: block;
+  font-weight: bolder;
+}
+#eliminar {
+  background-color: lightcoral;
+}
+#editar {
+  background-color: lightgoldenrodyellow;
+}

@@ -1,0 +1,15 @@
+<section class="car">
+  <img
+    class="car-photo"
+    [src]="car().photo"
+    alt="Photo of {{ car().brand }}, {{ car().model }}"
+    crossorigin
+  />
+  <h2 class="car-heading">{{ car().brand }}, {{ car().model }}</h2>
+  <p class="car-year">{{ car().year }}</p>
+  <h3 class="car-price">{{ car().price.toFixed(2) }}€</h3>
+
+  <a [routerLink]="['/details', car()._id]">Learn More</a>
+  <button id="editar" [routerLink]="['/edit', car()._id]">EDITAR</button>
+  <button id="eliminar" (click)="deleteCar(car()._id)">ELIMINAR</button>
+</section>

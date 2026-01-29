@@ -1,0 +1,19 @@
+<article>
+  <img
+    class="car-photo"
+    [src]="car?.photo"
+    alt="Photo of {{ car?.brand }}, {{ car?.model }}"
+    crossorigin
+  />
+  <section class="car-description">
+    <h2 class="car-heading">{{ car?.brand }}</h2>
+    <p class="car-model">{{ car?.model }}</p>
+  </section>
+  <section class="car-features">
+    <h2 class="section-heading">About this car</h2>
+    <ul>
+      <li>Year: {{ car?.year }}</li>
+      <li>Price: {{ car?.price?.toFixed(2) }}€</li>
+    </ul>
+  </section>
+</article>
