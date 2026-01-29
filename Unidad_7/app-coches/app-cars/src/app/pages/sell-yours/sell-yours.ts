@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../interfaces/car';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sell-yours',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './sell-yours.html',
   styleUrl: './sell-yours.css',
 })
@@ -35,7 +35,7 @@ export class SellYours {
     const checkBrand = brand.length >= 1;
     const checkModel = model.length >= 1;
     const checkYear = year >= 1890;
-    const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png');
+    const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png') || photo.endsWith('.jpeg');
 
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {
       throw new Error('Datos de coche inválidos');

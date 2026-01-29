@@ -53,7 +53,7 @@ export class Editar {
     const checkBrand = brand.length >= 1;
     const checkModel = model.length >= 1;
     const checkYear = year >= 1890;
-    const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png');
+    const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png') || photo.endsWith('.jpeg');
 
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {
       throw new Error('Datos de coche inválidos');
