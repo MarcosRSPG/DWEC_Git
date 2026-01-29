@@ -1,0 +1,14 @@
+article {
+  justify-self: center;
+  margin-top: 10%;
+  h1 {
+    padding: 5%;
+    font-size: xxx-large;
+  }
+  h2 {
+    font-size: xx-large;
+  }
+  p {
+    font-size: large;
+  }
+}
