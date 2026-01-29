@@ -3,30 +3,30 @@
 
   <label>
     Marca
-    <input type="text" formControlName="brand" value="{{ car?.brand }}" />
+    <input type="text" formControlName="brand" />
   </label>
 
   <label>
     Modelo
-    <input type="text" formControlName="model" value="{{ car?.model }}" />
+    <input type="text" formControlName="model" />
   </label>
 
   <div class="row">
     <label>
       Año
-      <input type="number" formControlName="year" value="{{ car?.year }}" />
+      <input type="number" formControlName="year" />
     </label>
 
     <label>
       Precio (€)
-      <input type="number" formControlName="price" value="{{ car?.price }}" />
+      <input type="number" formControlName="price" />
     </label>
   </div>
 
   <label>
     Foto (URL .jpg/.jpeg/.png)
-    <input type="text" formControlName="photo" value="{{ car?.photo }}" />
+    <input type="text" formControlName="photo" />
   </label>
 
-  <button type="submit" [routerLink]="['/selling-cars']">EDITAR COCHE</button>
+  <button type="submit">EDITAR COCHE</button>
 </form>

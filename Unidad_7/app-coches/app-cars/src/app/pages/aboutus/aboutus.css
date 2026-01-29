@@ -1,0 +1,82 @@
+.about {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 18px;
+}
+
+.about__header,
+.about__section,
+.about__footer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.about__header {
+  padding: 18px;
+  background:
+    radial-gradient(900px circle at 15% 10%, rgba(99, 102, 241, 0.2), transparent 55%),
+    radial-gradient(700px circle at 85% 25%, rgba(16, 185, 129, 0.18), transparent 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.7));
+}
+
+.about__section {
+  padding: 16px;
+  background:
+    radial-gradient(800px circle at 0% 0%, rgba(59, 130, 246, 0.14), transparent 50%),
+    radial-gradient(700px circle at 100% 0%, rgba(236, 72, 153, 0.12), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
+}
+
+.about__section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.18) 0.8px, transparent 0.9px);
+  background-size: 18px 18px;
+  transform: translateZ(0);
+}
+
+.team__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.team__card::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.18),
+    rgba(16, 185, 129, 0.12),
+    rgba(236, 72, 153, 0.1)
+  );
+  transform: rotate(12deg);
+  opacity: 0.55;
+}
+
+.team__card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.about__footer {
+  padding: 16px;
+  background:
+    radial-gradient(900px circle at 20% 20%, rgba(0, 0, 0, 0.08), transparent 55%),
+    linear-gradient(135deg, rgba(245, 245, 245, 0.95), rgba(235, 235, 235, 0.8));
+}

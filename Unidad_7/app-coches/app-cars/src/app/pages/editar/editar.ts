@@ -1,17 +1,18 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CarService } from '../../services/car.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from '../../interfaces/car';
 
 @Component({
   selector: 'app-editar',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './editar.html',
   styleUrl: './editar.css',
 })
 export class Editar {
   route: ActivatedRoute = inject(ActivatedRoute);
+  router: Router = inject(Router);
   carService = inject(CarService);
   applyForm = new FormGroup({
     brand: new FormControl(''),
@@ -26,11 +27,18 @@ export class Editar {
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     this.carService.getById(this.carId).then((car: Car) => {
       this.car = car;
+      this.applyForm.patchValue({
+        brand: car.brand,
+        model: car.model,
+        year: car.year,
+        price: car.price,
+        photo: car.photo,
+      });
       this.changeDetectorRef.markForCheck();
     });
   }
-  editarCar() {
-    this.carService.put(
+  async editarCar() {
+    await this.carService.put(
       this.comprobarCar(
         this.applyForm.value.brand ?? '',
         this.applyForm.value.model ?? '',
@@ -39,11 +47,12 @@ export class Editar {
         this.applyForm.value.photo ?? '',
       ),
     );
+    this.router.navigate(['/selling-cars']);
   }
   comprobarCar(brand: string, model: string, year: number, price: number, photo: string): Car {
     const checkBrand = brand.length >= 1;
     const checkModel = model.length >= 1;
-    const checkYear = year >= 1990;
+    const checkYear = year >= 1890;
     const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png');
 
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {

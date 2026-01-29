@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../interfaces/car';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-sell-yours',
   imports: [ReactiveFormsModule, RouterLink],
@@ -18,9 +18,9 @@ export class SellYours {
     price: new FormControl(0),
     photo: new FormControl(''),
   });
-
-  submitCar() {
-    this.carService.post([
+  router: Router = inject(Router);
+  async submitCar() {
+    await this.carService.post([
       this.comprobarCar(
         this.applyForm.value.brand ?? '',
         this.applyForm.value.model ?? '',
@@ -29,11 +29,12 @@ export class SellYours {
         this.applyForm.value.photo ?? '',
       ),
     ]);
+    this.router.navigate(['/selling-cars']);
   }
   comprobarCar(brand: string, model: string, year: number, price: number, photo: string): Car {
     const checkBrand = brand.length >= 1;
     const checkModel = model.length >= 1;
-    const checkYear = year >= 1990;
+    const checkYear = year >= 1890;
     const checkPhoto = photo.endsWith('.jpg') || photo.endsWith('.png');
 
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {

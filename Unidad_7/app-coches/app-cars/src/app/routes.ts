@@ -4,6 +4,7 @@ import { SellingCars } from './pages/selling-cars/selling-cars';
 import { Details } from './pages/details/details';
 import { SellYours } from './pages/sell-yours/sell-yours';
 import { Editar } from './pages/editar/editar';
+import { Aboutus } from './pages/aboutus/aboutus';
 
 const routeConfig: Routes = [
   {
@@ -30,6 +31,11 @@ const routeConfig: Routes = [
     path: 'edit/:id',
     component: Editar,
     title: 'Edit your car',
+  },
+  {
+    path: 'aboutus',
+    component: Aboutus,
+    title: 'About us',
   },
 ];
 export default routeConfig;
