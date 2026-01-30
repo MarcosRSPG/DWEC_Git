@@ -1,0 +1,35 @@
+<h2>Álbumes</h2>
+<button routerLink="/create">➕ Nuevo álbum</button>
+
+<br /><br />
+<label>Filtrar por género:</label><br />
+<input
+  id="genreFilter"
+  #genreFilter
+  placeholder="Rock, Electronic..."
+  (keyup)="filterResults(genreFilter.value)"
+/>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Artista</th>
+      <th>Año</th>
+      <th>Género</th>
+      <th>Nº Canciones</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="albumTable">
+    @if (!listaFiltrada) {
+      <tr>
+        <th>No se han encontrado resultados</th>
+      </tr>
+    } @else {
+      @for (album of listaFiltrada; track $index) {
+        <app-album-td [album]="album" />
+      }
+    }
+  </tbody>
+</table>

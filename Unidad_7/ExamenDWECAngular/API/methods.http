@@ -1,0 +1,40 @@
+GET http://localhost:3400/albums
+Accept: application/json
+
+###
+
+GET http://localhost:3400/albums/697d0455b6b0d40a7ebf1c0c/songs
+Accept: application/json
+
+###
+
+POST http://localhost:3400/albums
+Content-Type: application/json
+
+[
+    {
+        "title": "Album1",
+        "artist": "Artist1",
+        "year": 1980,
+        "genre": "Rock",
+        "coverUrl": "http://"
+    }
+]
+
+###
+
+POST http://localhost:3400/songs
+Content-Type: application/json
+
+[
+    {
+        "title": "Cancion1",
+        "duration": 5,
+        "rating": 5,
+        "albumId": "697d0455b6b0d40a7ebf1c0c",
+        "listened": true
+    }
+]
+
+
+

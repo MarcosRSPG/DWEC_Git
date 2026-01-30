@@ -1,0 +1,11 @@
+<tr>
+  <td>{{ album().title }}</td>
+  <td>{{ album().artist }}</td>
+  <td>{{ album().year }}</td>
+  <td>{{ album().genre }}</td>
+  <td>{{ songs }}</td>
+  <td class="actions">
+    <button [routerLink]="['/songs', album()._id]">Ver canciones</button>
+    <button (click)="eliminarAlbum(album()._id || '')">Eliminar</button>
+  </td>
+</tr>

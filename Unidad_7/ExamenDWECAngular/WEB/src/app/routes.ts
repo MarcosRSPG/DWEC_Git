@@ -1,34 +1,29 @@
 import { Routes } from '@angular/router';
-import { Details } from './pages/details/details';
-import { Editar } from './pages/editar/editar';
-import { Aboutus } from './pages/aboutus/aboutus';
-import { MovieList } from './pages/movie-list-component/movie-list-component';
+import { AlbumListComponent } from './pages/album-list-component/album-list-component';
+import { AlbumCreate } from './pages/album-create-component/album-create-component';
+import { SongTableComponent } from './pages/song-table-component/song-table-component';
+import { SongCreateComponent } from './pages/song-create-component/song-create-component';
 
 const routeConfig: Routes = [
   {
     path: '',
-    component: MovieList,
-    title: 'Movie List',
-  },
-  {
-    path: 'details/:id',
-    component: Details,
-    title: 'Details of the film',
-  },
-  {
-    path: 'edit/:id',
-    component: Editar,
-    title: 'Edit a film',
+    component: AlbumListComponent,
+    title: 'Album List',
   },
   {
     path: 'create',
-    component: Editar,
-    title: 'Create a film',
+    component: AlbumCreate,
+    title: 'Create Album',
   },
   {
-    path: 'aboutus',
-    component: Aboutus,
-    title: 'About us',
+    path: 'songs/:id',
+    component: SongTableComponent,
+    title: 'Songs',
+  },
+  {
+    path: 'create/song/:id',
+    component: SongCreateComponent,
+    title: 'Create Song',
   },
 ];
 export default routeConfig;

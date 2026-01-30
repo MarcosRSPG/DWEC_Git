@@ -1,5 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
-html {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: skyblue;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+nav {
+  background: #222;
+  color: white;
+  padding: 1rem;
+}
+
+nav a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: white;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #eee;
+}
+
+button {
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.stars {
+  cursor: pointer;
+  color: gold;
+}
+
+input,
+select {
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+  width: 200px;
+}
+
+form {
+  background: white;
+  padding: 1rem;
+  max-width: 400px;
+}
+
+.actions button {
+  margin-right: 0.3rem;
 }

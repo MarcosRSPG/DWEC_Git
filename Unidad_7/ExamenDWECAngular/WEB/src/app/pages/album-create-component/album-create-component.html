@@ -1,0 +1,17 @@
+<h2>Crear Álbum</h2>
+<form class="card" [formGroup]="applyForm" (submit)="submit()">
+  <label>Título</label><br />
+  <input required id="title" formControlName="title" /><br />
+
+  <label>Artista</label><br />
+  <input required id="artist" formControlName="artist" /><br />
+
+  <label>Año</label><br />
+  <input type="number" required id="year" formControlName="year" /><br />
+
+  <label>Género</label><br />
+  <input id="genre" formControlName="genre" /><br /><br />
+
+  <button type="submit">Guardar</button>
+  <button type="button" routerLink="">Cancelar</button>
+</form>

@@ -1,0 +1,33 @@
+<h2>{{ album?.title }} - Canciones</h2>
+<button routerLink="">⬅ Volver</button>
+<button [routerLink]="['/create/song', idParam]">➕ Nueva canción</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Duración</th>
+      <th>Rating</th>
+      <th>Escuchada</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (!listaFiltrada) {
+      <th>No se han encontrado resultados</th>
+    } @else {
+      @for (song of listaFiltrada; track $index) {
+        <tr>
+          <td>{{ song?.title }}</td>
+          <td>{{ song?.duration }}</td>
+          <td>{{ song?.rating }}</td>
+          <td><input type="checkbox" value="{{ song?.listened }}" /></td>
+          <td class="actions">
+            <button (click)="eliminarSong(song?._id || '')">Eliminar</button>
+          </td>
+        </tr>
+      }
+    }
+  </tbody>
+  <tbody id="songTable"></tbody>
+</table>
