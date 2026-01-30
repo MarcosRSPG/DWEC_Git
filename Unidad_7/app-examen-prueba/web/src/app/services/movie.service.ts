@@ -18,7 +18,7 @@ export class MovieService {
         console.log(error);
       });
   }
-  async getPlatforms(): Promise<String[]> {
+  async getPlatforms(): Promise<string[]> {
     return await fetch(this.url + '/platforms')
       .then((response) => {
         if (response.status !== 200 && response.status !== 201) {
@@ -30,7 +30,7 @@ export class MovieService {
         console.log(error);
       });
   }
-  async getGenres(): Promise<String[]> {
+  async getGenres(): Promise<string[]> {
     return await fetch(this.url + '/genres')
       .then((response) => {
         if (response.status !== 200 && response.status !== 201) {

@@ -21,6 +21,11 @@ const routeConfig: Routes = [
     title: 'Edit a film',
   },
   {
+    path: 'create',
+    component: Editar,
+    title: 'Create a film',
+  },
+  {
     path: 'aboutus',
     component: Aboutus,
     title: 'About us',

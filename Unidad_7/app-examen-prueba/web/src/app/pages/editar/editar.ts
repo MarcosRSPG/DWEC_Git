@@ -8,7 +8,7 @@ import { Movie } from '../../interfaces/movie';
   selector: 'app-editar',
   imports: [ReactiveFormsModule],
   templateUrl: './editar.html',
-  styleUrl: './editar.css',
+  styleUrls: ['./editar.css'],
 })
 export class Editar {
   route: ActivatedRoute = inject(ActivatedRoute);
@@ -22,21 +22,29 @@ export class Editar {
     rating: new FormControl(0),
     photo: new FormControl(''),
   });
-  movie: Movie | undefined;
-  movieId = String(this.route.snapshot.params['id']);
+  movie?: Movie;
+  movieId?: string;
+  mode: 'edit' | 'create' = 'create';
   constructor(private changeDetectorRef: ChangeDetectorRef) {
-    this.movieService.getById(this.movieId).then((movie: Movie) => {
-      this.movie = movie;
-      this.applyForm.patchValue({
-        title: movie.title,
-        genre: movie.genre,
-        year: movie.year,
-        platform: movie.platform,
-        rating: movie.rating,
-        photo: movie.photo,
+    const idParam = this.route.snapshot.params['id'];
+    if (idParam) {
+      this.movieId = String(idParam);
+      this.mode = 'edit';
+      this.movieService.getById(this.movieId).then((movie: Movie) => {
+        this.movie = movie;
+        this.applyForm.patchValue({
+          title: movie.title,
+          genre: movie.genre,
+          year: movie.year,
+          platform: movie.platform,
+          rating: movie.rating,
+          photo: movie.photo,
+        });
+        this.changeDetectorRef.markForCheck();
       });
-      this.changeDetectorRef.markForCheck();
-    });
+    } else {
+      this.mode = 'create';
+    }
   }
   async crearMovie() {
     const title = this.applyForm.value.title ?? '';
@@ -58,5 +66,13 @@ export class Editar {
     const photo = this.applyForm.value.photo ?? '';
     await this.movieService.put({ _id: id, title, genre, year, platform, rating, photo });
     this.router.navigate(['/']);
+  }
+
+  async submit() {
+    if (this.mode === 'edit') {
+      await this.editarMovie();
+    } else {
+      await this.crearMovie();
+    }
   }
 }
