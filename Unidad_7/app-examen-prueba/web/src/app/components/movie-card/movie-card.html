@@ -1,0 +1,11 @@
+<p>movie-card works!</p>
+<section class="movie">
+  <img class="movie-photo" [src]="movie().photo" alt="Photo of {{ movie().title }}" crossorigin />
+  <h2 class="movie-heading">{{ movie().title }}</h2>
+  <p class="movie-genre">{{ movie().genre }}, {{ movie().year }}</p>
+  <h3 class="movie-meta">{{ movie().platform }}, {{ movie().rating }}</h3>
+
+  <a [routerLink]="['/details', movie()._id]">Learn More</a>
+  <button id="editar" [routerLink]="['/edit', movie()._id]">EDITAR</button>
+  <button id="eliminar" (click)="deleteMovie(movie()._id)">ELIMINAR</button>
+</section>

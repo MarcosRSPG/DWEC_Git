@@ -1,0 +1,14 @@
+<article>
+  <img class="movie-photo" [src]="movie?.photo" alt="Photo of {{ movie?.title }}" crossorigin />
+  <section class="movie-description">
+    <h2 class="movie-heading">{{ movie?.title }}</h2>
+    <p class="movie-genre">{{ movie?.genre }}</p>
+  </section>
+  <section class="movie-features">
+    <h2 class="section-heading">About this movie</h2>
+    <ul>
+      <li>Year: {{ movie?.year }}</li>
+      <li>Details: {{ movie?.platform }}, {{ movie?.rating }}</li>
+    </ul>
+  </section>
+</article>

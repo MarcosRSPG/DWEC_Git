@@ -1,0 +1,35 @@
+<section>
+  <form id="filtros">
+    <section>
+      <input
+        type="text"
+        placeholder="Filter"
+        #filter
+        (keyup)="filterResults(filter.value, platform.value, genre.value)"
+      />
+    </section>
+    <section>
+      <select
+        id="platforms"
+        #platform
+        (change)="filterResults(filter.value, platform.value, genre.value)"
+      >
+        <option value="">Todas</option>
+        @for (platform of listaPlatforms; track $index) {
+          <option value="{{ platform }}">{{ platform }}</option>
+        }
+      </select>
+      <select id="genre" #genre (change)="filterResults(filter.value, platform.value, genre.value)">
+        <option value="">Todos</option>
+        @for (genre of listaGenres; track $index) {
+          <option value="{{ genre }}">{{ genre }}</option>
+        }
+      </select>
+    </section>
+  </form>
+</section>
+<section class="results">
+  @for (movie of listaFiltrada; track $index) {
+    <app-movie-card [movie]="movie" />
+  }
+</section>
