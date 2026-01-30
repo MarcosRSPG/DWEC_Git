@@ -1,8 +1,8 @@
-<header class="brand-name" [hidden]="!authService.isLoggedIn()">
-  <a class="logo" routerLink="/">
+<header class="brand-name">
+  <a class="logo" routerLink="/" [hidden]="!authService.isLoggedIn()">
     <h1>App Cars</h1>
   </a>
-  <app-navbar />
+  <app-navbar [hidden]="!authService.isLoggedIn()" />
 </header>
 
 <main class="content">
