@@ -17,4 +17,7 @@ export class MovieCard {
     await this.movieService.delete(id ?? '');
     location.reload();
   }
+  generateStars(rating: number): number[] {
+    return Array(Math.round(rating)).fill(0);
+  }
 }

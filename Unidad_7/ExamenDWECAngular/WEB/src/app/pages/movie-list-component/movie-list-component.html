@@ -29,7 +29,11 @@
   </form>
 </section>
 <section class="results">
-  @for (movie of listaFiltrada; track $index) {
-    <app-movie-card [movie]="movie" />
+  @if (listaFiltrada.length === 0) {
+    <h2>No se han encontrado resultados</h2>
+  } @else {
+    @for (movie of listaFiltrada; track $index) {
+      <app-movie-card [movie]="movie" />
+    }
   }
 </section>
