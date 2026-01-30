@@ -22,7 +22,6 @@ export class Editar {
     photo: new FormControl(''),
   });
   car: Car | undefined;
-
   carId = String(this.route.snapshot.params['id']);
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     this.carService.getById(this.carId).then((car: Car) => {
@@ -58,6 +57,14 @@ export class Editar {
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {
       throw new Error('Datos de coche inválidos');
     }
-    return { _id: this.carId, brand, model, year, price, photo };
+    return {
+      _id: this.carId,
+      brand,
+      model,
+      year,
+      price,
+      photo,
+      user: this.car?.user as any,
+    };
   }
 }

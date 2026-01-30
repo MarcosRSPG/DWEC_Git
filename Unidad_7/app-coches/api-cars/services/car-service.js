@@ -39,7 +39,14 @@ class CarService {
 
       const results = [];
       for (const h of arrayCars) {
-        const newCar = new Car(h.brand, h.model, h.year, h.price, h.photo);
+        const newCar = new Car(
+          h.brand,
+          h.model,
+          h.year,
+          h.price,
+          h.photo,
+          h.user,
+        );
         const r = await car.insertOne(newCar);
         results.push(r);
       }
@@ -52,13 +59,13 @@ class CarService {
     }
   }
 
-  static async put(id, brand, model, year, price, photo) {
+  static async put(id, brand, model, year, price, photo, user) {
     try {
       await client.connect();
       const database = client.db("carstore");
       const car = database.collection("cars");
       const filter = { _id: new ObjectId(id) };
-      const newCar = new Car(brand, model, year, price, photo);
+      const newCar = new Car(brand, model, year, price, photo, user);
       const result = await car.replaceOne(filter, newCar);
       return result;
     } catch (error) {

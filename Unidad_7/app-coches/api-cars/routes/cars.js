@@ -23,6 +23,7 @@ router.put("/:id", async function (req, res, next) {
     req.body.year,
     req.body.price,
     req.body.photo,
+    req.body.user,
   );
   if (car.matchedCount === 1) {
     res.status(200).json(true);

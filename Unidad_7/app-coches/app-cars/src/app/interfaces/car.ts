@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface Car {
   _id?: string;
   brand: string;
@@ -5,4 +7,5 @@ export interface Car {
   year: number;
   price: number;
   photo: string;
+  user: User;
 }

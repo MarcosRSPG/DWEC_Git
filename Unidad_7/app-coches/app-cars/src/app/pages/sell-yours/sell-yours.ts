@@ -3,6 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../interfaces/car';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-sell-yours',
   imports: [ReactiveFormsModule],
@@ -18,8 +20,16 @@ export class SellYours {
     price: new FormControl(0),
     photo: new FormControl(''),
   });
+  loginService = inject(LoginService);
+  user: User | null = null;
   router: Router = inject(Router);
   async submitCar() {
+    const userCompleto = await this.loginService.verifyToken(this.loginService.getToken() ?? '');
+    this.user = {
+      name: userCompleto.name,
+      password: userCompleto.password,
+      admin: userCompleto.admin,
+    };
     await this.carService.post([
       this.comprobarCar(
         this.applyForm.value.brand ?? '',
@@ -40,6 +50,7 @@ export class SellYours {
     if (!(checkBrand && checkModel && checkYear && checkPhoto)) {
       throw new Error('Datos de coche inválidos');
     }
-    return { brand, model, year, price, photo };
+
+    return { brand, model, year, price, photo, user: this.user! };
   }
 }

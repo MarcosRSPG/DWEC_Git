@@ -1,89 +1,3 @@
-POST http://localhost:3000/cars
-Content-Type: application/json
-
-[
-  
-  {
-    "brand": "Renault",
-    "model": "Clio",
-    "year": 2023,
-    "price": 19900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Renault_Clio_V_%282023%29_1X7A1579.jpg"
-  },
-  {
-    "brand": "SEAT",
-    "model": "León",
-    "year": 2021,
-    "price": 21900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Seat_Le%C3%B3n_IV_1.0_TSI_%282021%29_%2852925534406%29.jpg/1280px-Seat_Le%C3%B3n_IV_1.0_TSI_%282021%29_%2852925534406%29.jpg"
-  },
-  {
-    "brand": "Dacia",
-    "model": "Duster",
-    "year": 2018,
-    "price": 16900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/2018_Dacia_Duster.jpg"
-  },
-  {
-    "brand": "Skoda",
-    "model": "Octavia",
-    "year": 2021,
-    "price": 24900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/07/2021_Skoda_Octavia_SE_First_Edition_TSi_e-TEC_SA_1.0_Front.jpg"
-  },
-  {
-    "brand": "Audi",
-    "model": "A3",
-    "year": 2024,
-    "price": 35900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Audi_A3_8Y_IMG_0367.jpg"
-  },
-  {
-    "brand": "Fiat",
-    "model": "500e",
-    "year": 2022,
-    "price": 26900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/2022_Fiat_500e_3%2B1_La_Prima_at_NYIAS%2C_front_right.jpg/960px-2022_Fiat_500e_3%2B1_La_Prima_at_NYIAS%2C_front_right.jpg"
-  },
-  {
-    "brand": "Kia",
-    "model": "XCeed",
-    "year": 2020,
-    "price": 22900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/a/ae/2020_Kia_XCeed_3_1.4_Front.jpg"
-  },
-  {
-    "brand": "Ford",
-    "model": "Focus",
-    "year": 2018,
-    "price": 20900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6d/2018_Ford_Focus_Titanium_X_1.0.jpg"
-  },
-  {
-    "brand": "Hyundai",
-    "model": "i30 N",
-    "year": 2019,
-    "price": 27900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/bc/2019_Hyundai_i30_N.jpg"
-  },
-  {
-    "brand": "Nissan",
-    "model": "Leaf",
-    "year": 2019,
-    "price": 18900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/2019_Nissan_Leaf_N-Connecta.jpg"
-  },
-  {
-    "brand": "Mini",
-    "model": "Cooper",
-    "year": 2019,
-    "price": 21900,
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/8/81/2019_Mini_Cooper_Exclusive_1.5_Front.jpg"
-  }
-]
-
-
-###
 
 GET http://localhost:3000/cars
 Accept: application/json
@@ -94,6 +8,105 @@ DELETE http://localhost:3000/cars
 Accept: application/json
 
 ###
+
+POST http://localhost:3000/cars
+Content-Type: application/json
+
+[
+  {
+    "brand": "Renault",
+    "model": "Clio",
+    "year": 2023,
+    "price": 19900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Renault_Clio_V_%282023%29_1X7A1579.jpg",
+    "user": { "name": "admin", "password": "pass", "admin": false }
+  },
+  {
+    "brand": "SEAT",
+    "model": "León",
+    "year": 2021,
+    "price": 21900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Seat_Le%C3%B3n_IV_1.0_TSI_%282021%29_%2852925534406%29.jpg/1280px-Seat_Le%C3%B3n_IV_1.0_TSI_%282021%29_%2852925534406%29.jpg",
+    "user": { "name": "admin", "password": "pass", "admin": false }
+  },
+  {
+    "brand": "Dacia",
+    "model": "Duster",
+    "year": 2018,
+    "price": 16900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/2018_Dacia_Duster.jpg",
+    "user": { "name": "user1", "password": "pass1", "admin": false }
+  },
+  {
+    "brand": "Skoda",
+    "model": "Octavia",
+    "year": 2021,
+    "price": 24900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/07/2021_Skoda_Octavia_SE_First_Edition_TSi_e-TEC_SA_1.0_Front.jpg",
+    "user": { "name": "user2", "password": "pass2", "admin": false }
+  },
+  {
+    "brand": "Audi",
+    "model": "A3",
+    "year": 2024,
+    "price": 35900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Audi_A3_8Y_IMG_0367.jpg",
+    "user": { "name": "user1", "password": "pass1", "admin": false }
+  },
+  {
+    "brand": "Fiat",
+    "model": "500e",
+    "year": 2022,
+    "price": 26900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/2022_Fiat_500e_3%2B1_La_Prima_at_NYIAS%2C_front_right.jpg/960px-2022_Fiat_500e_3%2B1_La_Prima_at_NYIAS%2C_front_right.jpg",
+    "user": { "name": "user3", "password": "pass3", "admin": false }
+  },
+  {
+    "brand": "Kia",
+    "model": "XCeed",
+    "year": 2020,
+    "price": 22900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/a/ae/2020_Kia_XCeed_3_1.4_Front.jpg",
+    "user": { "name": "admin", "password": "pass", "admin": true }
+  },
+  {
+    "brand": "Ford",
+    "model": "Focus",
+    "year": 2018,
+    "price": 20900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6d/2018_Ford_Focus_Titanium_X_1.0.jpg",
+    "user": { "name": "user2", "password": "pass2", "admin": false }
+  },
+  {
+    "brand": "Hyundai",
+    "model": "i30 N",
+    "year": 2019,
+    "price": 27900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/bc/2019_Hyundai_i30_N.jpg",
+    "user": { "name": "user1", "password": "pass1", "admin": false }
+  },
+  {
+    "brand": "Nissan",
+    "model": "Leaf",
+    "year": 2019,
+    "price": 18900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/2019_Nissan_Leaf_N-Connecta.jpg",
+    "user": { "name": "user3", "password": "pass3", "admin": false }
+  },
+  {
+    "brand": "Mini",
+    "model": "Cooper",
+    "year": 2019,
+    "price": 21900,
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/8/81/2019_Mini_Cooper_Exclusive_1.5_Front.jpg",
+    "user": { "name": "admin", "password": "pass", "admin": true }
+  }
+]
+
+
+
+
+###
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -101,7 +114,8 @@ Content-Type: application/json
   {
     "name": "admin",
     "password": "pass",
-    "admin": true
+    "admin": true,
+    "token": "admi-ntok-en1234"
   }
 ]
 
@@ -115,3 +129,8 @@ Content-Type: application/json
     "name": "admin",
     "password": "pass"
   }
+
+###
+
+GET http://localhost:3000/users/
+Accept: application/json

@@ -5,8 +5,14 @@ import { Details } from './pages/details/details';
 import { SellYours } from './pages/sell-yours/sell-yours';
 import { Editar } from './pages/editar/editar';
 import { Aboutus } from './pages/aboutus/aboutus';
+import { Login } from './pages/login/login';
 
 const routeConfig: Routes = [
+  {
+    path: 'login',
+    component: Login,
+    title: 'Login',
+  },
   {
     path: '',
     component: Home,

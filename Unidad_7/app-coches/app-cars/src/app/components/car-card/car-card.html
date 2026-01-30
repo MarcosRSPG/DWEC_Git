@@ -10,6 +10,8 @@
   <h3 class="car-price">{{ car().price.toFixed(2) }}€</h3>
 
   <a [routerLink]="['/details', car()._id]">Learn More</a>
-  <button id="editar" [routerLink]="['/edit', car()._id]">EDITAR</button>
-  <button id="eliminar" (click)="deleteCar(car()._id)">ELIMINAR</button>
+  <section [hidden]="!(isAdmin || isUser)">
+    <button id="editar" [routerLink]="['/edit', car()._id]">EDITAR</button>
+    <button id="eliminar" (click)="deleteCar(car()._id)">ELIMINAR</button>
+  </section>
 </section>
