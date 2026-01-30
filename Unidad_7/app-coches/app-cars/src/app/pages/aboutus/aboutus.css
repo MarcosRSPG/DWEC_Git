@@ -80,3 +80,12 @@
     radial-gradient(900px circle at 20% 20%, rgba(0, 0, 0, 0.08), transparent 55%),
     linear-gradient(135deg, rgba(245, 245, 245, 0.95), rgba(235, 235, 235, 0.8));
 }
+.about__figure {
+  .about__image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  width: 80%;
+  justify-self: center;
+}
