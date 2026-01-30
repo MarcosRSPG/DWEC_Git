@@ -1,0 +1,77 @@
+<article class="about">
+  <header class="about__header">
+    <h1>Sobre nosotros</h1>
+    <p class="about__lead">
+      Bienvenido/a a <strong>CarStore</strong>, una web para explorar coches en venta, ver detalles
+      y publicar tu propio coche de forma sencilla.
+    </p>
+  </header>
+
+  <section class="about__section" aria-labelledby="about-what">
+    <h2 id="about-what">¿Qué es este sitio?</h2>
+    <p>
+      CarStore es un proyecto web orientado a practicar un flujo completo: front con Angular + API
+      REST con Node/Express + base de datos MongoDB. El objetivo es ofrecer una experiencia clara,
+      rápida y fácil de usar.
+    </p>
+
+    <figure class="about__figure">
+      <img
+        class="about__image"
+        src="/Unidad_7/app-coches/app-cars/public/assets/img/about-page.jpg"
+        alt="Imagen representativa del catálogo de coches"
+      />
+      <figcaption>Catálogo, detalles y gestión de anuncios.</figcaption>
+    </figure>
+  </section>
+
+  <section class="about__section" aria-labelledby="about-features">
+    <h2 id="about-features">¿Qué puedes hacer aquí?</h2>
+    <ul class="about__list">
+      <li>Buscar y filtrar coches por marca/modelo.</li>
+      <li>Ordenar por precio o año.</li>
+      <li>Ver detalles de cada coche.</li>
+      <li>Crear, editar y eliminar anuncios.</li>
+    </ul>
+  </section>
+
+  <section class="about__section" aria-labelledby="about-team">
+    <h2 id="about-team">Creador</h2>
+
+    <div class="team">
+      <section class="team__card" aria-label="Perfil de Marcos">
+        <img
+          class="team__avatar"
+          src="/Unidad_7/app-coches/app-cars/public/assets/img/about-page.jpg"
+          alt="Foto de Marcos Rodriguez"
+        />
+        <div class="team__info">
+          <h3 class="team__name">Marcos Rodriguez</h3>
+          <p class="team__role">Backend & Base de datos</p>
+          <p class="team__bio">
+            Desarrollo de endpoints REST, lógica de negocio y persistencia en MongoDB.
+          </p>
+
+          <nav class="team__social" aria-label="Redes sociales de Marcos Rodriguez">
+            <a href="https://github.com/MarcosRSPG" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/marcos-rodriguez-saenz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </nav>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <footer class="about__footer">
+    <p>
+      ¿Quieres contactar? Escríbenos desde la sección <a [routerLink]="['/contact']">Contacto</a>.
+    </p>
+  </footer>
+</article>

@@ -1,0 +1,36 @@
+<form class="card" [formGroup]="applyForm" (submit)="submit()">
+  <h2>Edita la pelicula</h2>
+
+  <label>
+    Titulo
+    <input type="text" formControlName="title" required />
+  </label>
+
+  <label>
+    Genero
+    <input type="text" formControlName="genre" />
+  </label>
+
+  <div class="row">
+    <label>
+      Año
+      <input type="number" formControlName="year" required />
+    </label>
+
+    <label>
+      Plataforma
+      <input type="text" formControlName="platform" />
+    </label>
+    <label>
+      Rating (0-10)
+      <input type="number" max="10" min="0" formControlName="rating" />
+    </label>
+  </div>
+
+  <label>
+    Foto (URL .jpg/.jpeg/.png)
+    <input type="text" formControlName="photo" />
+  </label>
+
+  <button type="submit">{{ mode === 'edit' ? 'EDITAR PELICULA' : 'CREAR PELICULA' }}</button>
+</form>
